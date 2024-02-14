@@ -156,6 +156,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trbSpeedControl)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1195,15 +1196,15 @@
             // 
             // trbLighting
             // 
-            this.trbLighting.LargeChange = 64;
+            this.trbLighting.LargeChange = 32;
             this.trbLighting.Location = new System.Drawing.Point(138, 69);
-            this.trbLighting.Maximum = 255;
+            this.trbLighting.Maximum = 128;
             this.trbLighting.Name = "trbLighting";
             this.trbLighting.Size = new System.Drawing.Size(180, 45);
             this.trbLighting.SmallChange = 16;
             this.trbLighting.TabIndex = 70;
             this.trbLighting.TickFrequency = 32;
-            this.trbLighting.Value = 255;
+            this.trbLighting.Value = 120;
             this.trbLighting.ValueChanged += new System.EventHandler(this.trbLighting_ValueChanged);
             // 
             // btnRec
@@ -1354,6 +1355,7 @@
             // 
             // grpSensors
             // 
+            this.grpSensors.Controls.Add(this.button2);
             this.grpSensors.Controls.Add(this.chkAngle);
             this.grpSensors.Controls.Add(this.btnAngleOffsett);
             this.grpSensors.Controls.Add(this.label19);
@@ -1560,6 +1562,16 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(74, 14);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 65;
+            this.button2.Text = "Set Camera";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1736,6 +1748,7 @@
         private System.Windows.Forms.CheckBox chkAngle;
         private System.Windows.Forms.ComboBox cmbLocation;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button2;
     }
 }
 

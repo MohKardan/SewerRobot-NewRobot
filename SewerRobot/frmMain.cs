@@ -167,6 +167,31 @@ namespace SewerRobot
                 {
                     try
                     {
+                        try
+                        {
+                            byte[] hex = new byte[8] { 0x01, 0x04, 0x03, 0xeb, 0x00, 0x02, 0x01, 0xbb };    //Read Counter
+                            serialPort1.Write(hex, 0, 8);
+                            Thread.Sleep(100);
+                            byte[] readHex = new byte[11];
+                            serialPort1.Read(readHex, 0, 11);
+
+                            if (hex[1] == 0x04)
+                            {
+                                byte[] tmpHex = new byte[4];
+                                tmpHex[0] = readHex[4];
+                                tmpHex[1] = readHex[3];
+                                tmpHex[2] = readHex[6];
+                                tmpHex[3] = readHex[5];
+                                int tmp = BitConverter.ToInt32(tmpHex, 0);
+                                float encTemp = (float)(tmp / 100.0);
+                                _Fill_txtDistance(encTemp.ToString());
+                            }
+                        }
+                        catch(Exception ex)
+                        {
+                            _Fill_lblError(ex.Message);
+                        }
+
                         if (rotationCamera)
                         {
                             serialPort1.Write(msgCamera, 0, msgCamera.Length);
@@ -185,51 +210,54 @@ namespace SewerRobot
                             byte[] msg;
                             string sensors;
 
-                            if (isBackward)
-                            {
-                                msg = new byte[9] { (byte)'<', (byte)'B', (byte)'>', (byte)'<', (byte)'B', (byte)'>', (byte)'<', (byte)'B', (byte)'>' };
-                                serialPort1.Write(msg, 0, msg.Length);
-                                Thread.Sleep(5);
-                            }
-                            else
-                            {
-                                msg = new byte[9] { (byte)'<', (byte)'F', (byte)'>', (byte)'<', (byte)'F', (byte)'>', (byte)'<', (byte)'F', (byte)'>' };
-                                serialPort1.Write(msg, 0, msg.Length);
-                                Thread.Sleep(5);
-                            }
-                            
+                            //if (isBackward)
+                            //{
+                            //    msg = new byte[9] { (byte)'<', (byte)'B', (byte)'>', (byte)'<', (byte)'B', (byte)'>', (byte)'<', (byte)'B', (byte)'>' };
+                            //    serialPort1.Write(msg, 0, msg.Length);
+                            //    Thread.Sleep(5);
+                            //}
+                            //else
+                            //{
+                            //    msg = new byte[9] { (byte)'<', (byte)'F', (byte)'>', (byte)'<', (byte)'F', (byte)'>', (byte)'<', (byte)'F', (byte)'>' };
+                            //    serialPort1.Write(msg, 0, msg.Length);
+                            //    Thread.Sleep(5);
+                            //}
 
-                            msg = new byte[3] { (byte)'<', (byte)'E', (byte)'>' };
-                            serialPort1.Write(msg, 0, msg.Length);
+                
+                             
+          
 
-                            Thread.Sleep(5);
+                            //msg = new byte[3] { (byte)'<', (byte)'E', (byte)'>' };
+                            //serialPort1.Write(msg, 0, msg.Length);
 
-                            sensors = serialPort1.ReadLine();
-                            int encStart = sensors.IndexOf("E");
-                            if(encStart==-1) encStart = sensors.IndexOf("?");
-                            int encEnd = sensors.IndexOf("e");
+                            //Thread.Sleep(5);
 
-                            if (encStart > -1 && encEnd > -1)
-                                encS = sensors.Substring(encStart + 1, encEnd - encStart - 1);
+                            //sensors = serialPort1.ReadLine();
+                            //int encStart = sensors.IndexOf("E");
+                            //if(encStart==-1) encStart = sensors.IndexOf("?");
+                            //int encEnd = sensors.IndexOf("e");
 
-                            if (int.TryParse(encS, out encoder))
-                                _Fill_txtDistance(((Int32)((encoder - encOffset) * dis)).ToString());
+                            //if (encStart > -1 && encEnd > -1)
+                            //    encS = sensors.Substring(encStart + 1, encEnd - encStart - 1);
+
+                            //if (int.TryParse(encS, out encoder))
+                            //    _Fill_txtDistance(((Int32)((encoder - encOffset) * dis)).ToString());
 
                             Thread.Sleep(0);
 
                             if (chkAngle.Checked == true)
                             {
-                                msg = new byte[3] { (byte)'<', (byte)'A', (byte)'>' };
+                                msg = new byte[4] { (byte)'<', (byte)'A', (byte)'N', (byte)'>' };
                                 serialPort1.Write(msg, 0, msg.Length);
 
-                                Thread.Sleep(550);
+                                Thread.Sleep(10);
 
                                 sensors = serialPort1.ReadExisting(); ;
                                 int angStart = sensors.IndexOf("Y");
 
                                 int angEnd = -1;
                                 if (angStart > 0)
-                                    angEnd = angStart + 6;
+                                    angEnd = angStart + 8;
 
                                 string angS = sensors.Substring(angStart + 1, angEnd - angStart - 1);
                                 float angle;
@@ -263,7 +291,7 @@ namespace SewerRobot
                                     SharingData.Y.Add(angle - angOffset);
                                 }
                             }
-                            msg = new byte[4] { (byte)'<', (byte)'L', (byte)valueTrbLighting, (byte)'>' };
+                            msg = new byte[6] { (byte)'<', (byte)'M', (byte)'D', (byte)'0', (byte)valueTrbLighting, (byte)'>' };
                             serialPort1.Write(msg, 0, msg.Length);
                             Thread.Sleep(5);
                         }
@@ -279,6 +307,40 @@ namespace SewerRobot
         {
             InitializeComponent();
             serialPort1.ReadTimeout = 20;
+        }
+        private void toHexHLConversion(int pos, out byte hexH, out byte hexL)
+        {
+            ushort uPos = (ushort)pos;
+            hexH = (byte)(uPos >> 8);
+            hexL = (byte)uPos;
+        }
+        private byte calc_checksum_camera(byte[] packet)
+        {
+            int checksum = 0;
+            for (int i = 2; i < packet.Length - 1; i++)
+            {
+                checksum += (int)packet[i];
+            }
+            checksum = (~checksum) & 0xFF;
+            return (byte)(checksum & 0xFF);
+        }
+        public void position_camera(int ID, int pos)
+        {
+            byte[] bytesToSend = new byte[9] { 0XFF, 0XFF, (byte)ID, 0X05, 0X03, 0X1E, 0X12, 0X92, 0X00 };
+            byte hexH = 0;
+            byte hexL = 0;
+            toHexHLConversion(pos, out hexH, out hexL);
+            bytesToSend[6] = hexL;
+            bytesToSend[7] = hexH;
+            bytesToSend[8] = calc_checksum_camera(bytesToSend);
+            try
+            {
+                serialPort1.Write(bytesToSend, 0, 9);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void AddFont()
         {
@@ -1725,6 +1787,11 @@ namespace SewerRobot
         private void cmbDirection_SelectedIndexChanged(object sender, EventArgs e)
         {
             flowDirection = cmbDirection.SelectedItem.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            position_camera(512, 512);
         }
 
     }

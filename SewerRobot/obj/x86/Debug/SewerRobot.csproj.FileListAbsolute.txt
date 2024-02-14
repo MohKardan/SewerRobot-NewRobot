@@ -181,3 +181,49 @@ H:\SewerRobot-NewRobot-1395.11.24\SewerRobot\obj\x86\Debug\SewerRobot.csprojReso
 H:\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
 H:\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.exe
 H:\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\Spire.Common.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\Spire.License.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\Spire.Pdf.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\Spire.XLS.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\Spire.Common.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\Spire.Pdf.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\Spire.XLS.xml
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.exe
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\SewerRobot.exe
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\Spire.Common.xml
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\Spire.Pdf.xml
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\Spire.XLS.xml
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+J:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.exe
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\SewerRobot.exe
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\Spire.Common.xml
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\Spire.Pdf.xml
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\bin\x86\Debug\Spire.XLS.xml
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+H:\SewerRobot-NewRobot-1396.02.04\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
