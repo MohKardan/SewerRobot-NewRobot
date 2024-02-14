@@ -1,0 +1,153 @@
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\bin\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.exe
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\bin\x86\Debug\SewerRobot.exe
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot95-7-4\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\bin\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950824\SewerRobot\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\obj\x86\Debug\SewerRobot.exe
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\bin\x86\Debug\SewerRobot.exe
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950825\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\obj\x86\Debug\SewerRobot.exe
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\bin\x86\Debug\SewerRobot.exe
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+H:\robotic\ربات بازرسی وویدئومتری\SewerRobot-950824\SewerRobot-950904\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\Spire.Common.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\Spire.License.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\Spire.Pdf.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\Spire.XLS.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\Spire.Common.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\Spire.Pdf.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\bin\x86\Debug\Spire.XLS.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\obj\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-950907\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\obj\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\Spire.Common.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\Spire.License.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\Spire.Pdf.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\Spire.XLS.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\Spire.Common.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\Spire.Pdf.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\bin\x86\Debug\Spire.XLS.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951003\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\Spire.Common.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\Spire.License.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\Spire.Pdf.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\Spire.XLS.dll
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\Spire.Common.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\Spire.Pdf.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\bin\x86\Debug\Spire.XLS.xml
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\obj\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-951005\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-951810\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+H:\SewerRobot-NewRobot-951810\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+H:\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.exe
+H:\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+H:\SewerRobot-NewRobot-951810\SewerRobot\bin\x86\Debug\SewerRobot.exe
+H:\SewerRobot-NewRobot-951810\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+H:\SewerRobot-NewRobot-951810\SewerRobot\bin\x86\Debug\Spire.Common.xml
+H:\SewerRobot-NewRobot-951810\SewerRobot\bin\x86\Debug\Spire.Pdf.xml
+H:\SewerRobot-NewRobot-951810\SewerRobot\bin\x86\Debug\Spire.XLS.xml
+H:\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+H:\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+H:\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+H:\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+H:\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+H:\SewerRobot-NewRobot-951810\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\obj\x86\Debug\SewerRobot.exe
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\bin\x86\Debug\SewerRobot.exe
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\bin\x86\Debug\Spire.Common.xml
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\bin\x86\Debug\Spire.Pdf.xml
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\bin\x86\Debug\Spire.XLS.xml
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+H:\SewerRobot-NewRobot-1395.11.18\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\obj\x86\Debug\SewerRobot.exe
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\obj\x86\Debug\SewerRobot.pdb
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\bin\x86\Debug\SewerRobot.exe
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\bin\x86\Debug\SewerRobot.pdb
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\bin\x86\Debug\Spire.Common.xml
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\bin\x86\Debug\Spire.Pdf.xml
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\bin\x86\Debug\Spire.XLS.xml
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\obj\x86\Debug\SewerRobot.frmAngle.resources
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect.resources
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
+H:\SewerRobot-NewRobot-1395.11.21\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache

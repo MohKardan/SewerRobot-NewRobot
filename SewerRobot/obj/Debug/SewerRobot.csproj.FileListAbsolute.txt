@@ -1,0 +1,39 @@
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\SewerRobot.exe.config
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\obj\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\obj\Debug\SewerRobot.frmMain.resources
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\obj\Debug\SewerRobot.Properties.Resources.resources
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\obj\Debug\SewerRobot.csproj.GenerateResource.Cache
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\SewerRobot.exe
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\SewerRobot.pdb
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\Emgu.CV.dll
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\Emgu.CV.UI.dll
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\Emgu.Util.dll
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\ZedGraph.dll
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\Emgu.CV.xml
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\Emgu.CV.UI.xml
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\Emgu.Util.xml
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\obj\Debug\SewerRobot.exe
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\obj\Debug\SewerRobot.pdb
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\obj\Debug\SewerRobot.frmCameraSelector.resources
+C:\Users\Faryan\Documents\Visual Studio 2013\Projects\SewerRobot\SewerRobot\bin\Debug\DirectShowLib-2005.dll
+I:\SewerRobot\SewerRobot\bin\Debug\SewerRobot.exe.config
+I:\SewerRobot\SewerRobot\obj\Debug\SewerRobot.exe
+I:\SewerRobot\SewerRobot\obj\Debug\SewerRobot.pdb
+I:\SewerRobot\SewerRobot\bin\Debug\SewerRobot.exe
+I:\SewerRobot\SewerRobot\bin\Debug\SewerRobot.pdb
+I:\SewerRobot\SewerRobot\bin\Debug\Emgu.CV.xml
+I:\SewerRobot\SewerRobot\obj\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+I:\SewerRobot\SewerRobot\obj\Debug\SewerRobot.frmCameraSelector.resources
+I:\SewerRobot\SewerRobot\obj\Debug\SewerRobot.frmMain.resources
+I:\SewerRobot\SewerRobot\obj\Debug\SewerRobot.Properties.Resources.resources
+I:\SewerRobot\SewerRobot\obj\Debug\SewerRobot.csproj.GenerateResource.Cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\bin\Debug\SewerRobot.exe.config
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\bin\Debug\SewerRobot.exe
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\bin\Debug\SewerRobot.pdb
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\Debug\SewerRobot.frmCameraSelector.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\Debug\SewerRobot.frmMain.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\Debug\SewerRobot.Properties.Resources.resources
+F:\Robotic javad1\Sherkat\Codes\SewerRobot\SewerRobot\obj\Debug\SewerRobot.csproj.GenerateResource.Cache
