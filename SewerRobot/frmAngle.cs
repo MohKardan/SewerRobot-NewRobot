@@ -30,7 +30,7 @@ namespace SewerRobot
             }
             if(SharingData.X.Count>0)
             SharingData.Avg = (max-min)/SharingData.X.Last();
-            double p = SharingData.Avg * 100 / 90;
+            double p = SharingData.Avg;// *100 / 90;
             tssLblAvgAngle.Text = "متوسط شیب: " + p.ToString() + "%";
             chartAngle.SaveImage(SharingData.ReportSubDir + "\\nemodar.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }

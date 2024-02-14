@@ -40,16 +40,27 @@
             // 
             // chartAngle
             // 
+            this.chartAngle.BorderlineWidth = 2;
+            this.chartAngle.BorderSkin.BorderWidth = 2;
+            chartArea1.AxisX.Interval = 720D;
+            chartArea1.AxisX.MinorGrid.Interval = double.NaN;
+            chartArea1.AxisX.MinorTickMark.Interval = double.NaN;
+            chartArea1.AxisY.MajorGrid.Interval = 0D;
             chartArea1.Name = "ChartArea1";
             this.chartAngle.ChartAreas.Add(chartArea1);
             this.chartAngle.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.MaximumAutoSize = 1F;
             legend1.Name = "Legend1";
             this.chartAngle.Legends.Add(legend1);
             this.chartAngle.Location = new System.Drawing.Point(0, 0);
             this.chartAngle.Name = "chartAngle";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.LabelBorderWidth = 2;
             series1.Legend = "Legend1";
+            series1.MarkerBorderWidth = 2;
+            series1.MarkerSize = 10;
+            series1.MarkerStep = 2;
             series1.Name = "Angle";
             this.chartAngle.Series.Add(series1);
             this.chartAngle.Size = new System.Drawing.Size(679, 429);

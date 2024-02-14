@@ -103,6 +103,9 @@
             this.chkCircle = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.cmbLocation = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.chkBranch = new System.Windows.Forms.CheckBox();
             this.cmbPipeShape = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.cmbDutyOfPipe = new System.Windows.Forms.ComboBox();
@@ -132,6 +135,7 @@
             this.btnSelectCamera = new System.Windows.Forms.Button();
             this.lblRec = new System.Windows.Forms.Label();
             this.grpSensors = new System.Windows.Forms.GroupBox();
+            this.chkAngle = new System.Windows.Forms.CheckBox();
             this.btnAngleOffsett = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.txtAngOffset = new System.Windows.Forms.TextBox();
@@ -152,7 +156,6 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.chkBranch = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trbSpeedControl)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -319,6 +322,7 @@
             this.cmbDirection.Name = "cmbDirection";
             this.cmbDirection.Size = new System.Drawing.Size(101, 28);
             this.cmbDirection.TabIndex = 15;
+            this.cmbDirection.SelectedIndexChanged += new System.EventHandler(this.cmbDirection_SelectedIndexChanged);
             // 
             // label18
             // 
@@ -351,6 +355,7 @@
             "315",
             "400",
             "500",
+            "600",
             "900"});
             this.cmbPipeSize.Location = new System.Drawing.Point(239, 236);
             this.cmbPipeSize.Name = "cmbPipeSize";
@@ -948,6 +953,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.cmbLocation);
+            this.tabPage4.Controls.Add(this.label24);
             this.tabPage4.Controls.Add(this.chkBranch);
             this.tabPage4.Controls.Add(this.cmbPipeShape);
             this.tabPage4.Controls.Add(this.label23);
@@ -965,6 +972,39 @@
             this.tabPage4.Text = "گزارش";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // cmbLocation
+            // 
+            this.cmbLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLocation.FormattingEnabled = true;
+            this.cmbLocation.Items.AddRange(new object[] {
+            "خیابان اصلی (ST)",
+            "پیاده رو (PR)"});
+            this.cmbLocation.Location = new System.Drawing.Point(106, 72);
+            this.cmbLocation.Name = "cmbLocation";
+            this.cmbLocation.Size = new System.Drawing.Size(192, 28);
+            this.cmbLocation.TabIndex = 57;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label24.Location = new System.Drawing.Point(304, 71);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(95, 26);
+            this.label24.TabIndex = 56;
+            this.label24.Text = "محل قرارگیری:";
+            // 
+            // chkBranch
+            // 
+            this.chkBranch.AutoSize = true;
+            this.chkBranch.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkBranch.Location = new System.Drawing.Point(227, 242);
+            this.chkBranch.Name = "chkBranch";
+            this.chkBranch.Size = new System.Drawing.Size(71, 30);
+            this.chkBranch.TabIndex = 55;
+            this.chkBranch.Text = "انشعاب";
+            this.chkBranch.UseVisualStyleBackColor = true;
+            // 
             // cmbPipeShape
             // 
             this.cmbPipeShape.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -978,7 +1018,7 @@
             "کمانی",
             "نعلی شکل",
             "سایر"});
-            this.cmbPipeShape.Location = new System.Drawing.Point(106, 159);
+            this.cmbPipeShape.Location = new System.Drawing.Point(106, 208);
             this.cmbPipeShape.Name = "cmbPipeShape";
             this.cmbPipeShape.Size = new System.Drawing.Size(192, 28);
             this.cmbPipeShape.TabIndex = 53;
@@ -987,7 +1027,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label23.Location = new System.Drawing.Point(304, 158);
+            this.label23.Location = new System.Drawing.Point(304, 207);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(67, 26);
             this.label23.TabIndex = 52;
@@ -1003,7 +1043,7 @@
             "آبهای سطحی",
             "فاضلاب صنعتی",
             " سایر"});
-            this.cmbDutyOfPipe.Location = new System.Drawing.Point(106, 125);
+            this.cmbDutyOfPipe.Location = new System.Drawing.Point(106, 174);
             this.cmbDutyOfPipe.Name = "cmbDutyOfPipe";
             this.cmbDutyOfPipe.Size = new System.Drawing.Size(192, 28);
             this.cmbDutyOfPipe.TabIndex = 51;
@@ -1012,7 +1052,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label22.Location = new System.Drawing.Point(304, 124);
+            this.label22.Location = new System.Drawing.Point(304, 173);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(69, 26);
             this.label22.TabIndex = 50;
@@ -1025,7 +1065,7 @@
             this.cmbProcedure.Items.AddRange(new object[] {
             "تونل",
             "ترانشه"});
-            this.cmbProcedure.Location = new System.Drawing.Point(106, 91);
+            this.cmbProcedure.Location = new System.Drawing.Point(106, 140);
             this.cmbProcedure.Name = "cmbProcedure";
             this.cmbProcedure.Size = new System.Drawing.Size(192, 28);
             this.cmbProcedure.TabIndex = 49;
@@ -1034,7 +1074,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label21.Location = new System.Drawing.Point(304, 90);
+            this.label21.Location = new System.Drawing.Point(304, 139);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(67, 26);
             this.label21.TabIndex = 48;
@@ -1059,7 +1099,7 @@
             "نوع نامشخصی از آهن یا استیل",
             "نوع نامشخصی از  ترکیبات پلاستک",
             "سایر"});
-            this.cmbPipeMaterial.Location = new System.Drawing.Point(106, 57);
+            this.cmbPipeMaterial.Location = new System.Drawing.Point(106, 106);
             this.cmbPipeMaterial.Name = "cmbPipeMaterial";
             this.cmbPipeMaterial.Size = new System.Drawing.Size(192, 28);
             this.cmbPipeMaterial.TabIndex = 47;
@@ -1068,7 +1108,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label20.Location = new System.Drawing.Point(304, 56);
+            this.label20.Location = new System.Drawing.Point(304, 105);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(70, 26);
             this.label20.TabIndex = 46;
@@ -1314,6 +1354,7 @@
             // 
             // grpSensors
             // 
+            this.grpSensors.Controls.Add(this.chkAngle);
             this.grpSensors.Controls.Add(this.btnAngleOffsett);
             this.grpSensors.Controls.Add(this.label19);
             this.grpSensors.Controls.Add(this.txtAngOffset);
@@ -1332,6 +1373,15 @@
             this.grpSensors.TabIndex = 61;
             this.grpSensors.TabStop = false;
             this.grpSensors.Text = "Sensors       ";
+            // 
+            // chkAngle
+            // 
+            this.chkAngle.AutoSize = true;
+            this.chkAngle.Location = new System.Drawing.Point(20, 106);
+            this.chkAngle.Name = "chkAngle";
+            this.chkAngle.Size = new System.Drawing.Size(15, 14);
+            this.chkAngle.TabIndex = 54;
+            this.chkAngle.UseVisualStyleBackColor = true;
             // 
             // btnAngleOffsett
             // 
@@ -1510,17 +1560,6 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // chkBranch
-            // 
-            this.chkBranch.AutoSize = true;
-            this.chkBranch.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.chkBranch.Location = new System.Drawing.Point(227, 193);
-            this.chkBranch.Name = "chkBranch";
-            this.chkBranch.Size = new System.Drawing.Size(71, 30);
-            this.chkBranch.TabIndex = 55;
-            this.chkBranch.Text = "انشعاب";
-            this.chkBranch.UseVisualStyleBackColor = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1694,6 +1733,9 @@
         private System.Windows.Forms.ComboBox cmbPipeMaterial;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.CheckBox chkBranch;
+        private System.Windows.Forms.CheckBox chkAngle;
+        private System.Windows.Forms.ComboBox cmbLocation;
+        private System.Windows.Forms.Label label24;
     }
 }
 

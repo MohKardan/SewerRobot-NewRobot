@@ -100,6 +100,7 @@ namespace SewerRobot
         byte[] msgCamera;
         int counterTakingPhoto = 0;
         string standardErorr;
+        string flowDirection = "در جهت جریان";
 
         private delegate void _SetDisplay(string Text);
 
@@ -155,12 +156,13 @@ namespace SewerRobot
                 MessageBox.Show(ex.Message + "txtDistance error");
             }
         }
-
+        string encS;
         void Control()
         {
+            
             while (true)
             {
-                //Thread.Sleep(500);
+                Thread.Sleep(500);
                 if (serialPort1.IsOpen)
                 {
                     try
@@ -183,6 +185,20 @@ namespace SewerRobot
                             byte[] msg;
                             string sensors;
 
+                            if (isBackward)
+                            {
+                                msg = new byte[9] { (byte)'<', (byte)'B', (byte)'>', (byte)'<', (byte)'B', (byte)'>', (byte)'<', (byte)'B', (byte)'>' };
+                                serialPort1.Write(msg, 0, msg.Length);
+                                Thread.Sleep(5);
+                            }
+                            else
+                            {
+                                msg = new byte[9] { (byte)'<', (byte)'F', (byte)'>', (byte)'<', (byte)'F', (byte)'>', (byte)'<', (byte)'F', (byte)'>' };
+                                serialPort1.Write(msg, 0, msg.Length);
+                                Thread.Sleep(5);
+                            }
+                            
+
                             msg = new byte[3] { (byte)'<', (byte)'E', (byte)'>' };
                             serialPort1.Write(msg, 0, msg.Length);
 
@@ -190,59 +206,63 @@ namespace SewerRobot
 
                             sensors = serialPort1.ReadLine();
                             int encStart = sensors.IndexOf("E");
+                            if(encStart==-1) encStart = sensors.IndexOf("?");
                             int encEnd = sensors.IndexOf("e");
 
-                            string encS = sensors.Substring(encStart + 1, encEnd - encStart - 1);
+                            if (encStart > -1 && encEnd > -1)
+                                encS = sensors.Substring(encStart + 1, encEnd - encStart - 1);
 
                             if (int.TryParse(encS, out encoder))
                                 _Fill_txtDistance(((Int32)((encoder - encOffset) * dis)).ToString());
 
                             Thread.Sleep(0);
 
-                            msg = new byte[3] { (byte)'<', (byte)'A', (byte)'>' };
-                            serialPort1.Write(msg, 0, msg.Length);
-
-                            Thread.Sleep(550);
-
-                            sensors = serialPort1.ReadExisting(); ;
-                            int angStart = sensors.IndexOf("Y ");
-
-                            int angEnd = -1;
-                            if (angStart > 0)
-                                angEnd = angStart + 6;
-
-                            string angS = sensors.Substring(angStart + 1, angEnd - angStart - 1);
-                            float angle;
-
-                            System.Globalization.NumberStyles style;
-                            System.Globalization.CultureInfo culture;
-                            style = System.Globalization.NumberStyles.Number |
-                                    System.Globalization.NumberStyles.AllowCurrencySymbol;
-                            culture = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
-
-                            
-                            if (Single.TryParse(angS, style, culture, out angle))
+                            if (chkAngle.Checked == true)
                             {
+                                msg = new byte[3] { (byte)'<', (byte)'A', (byte)'>' };
+                                serialPort1.Write(msg, 0, msg.Length);
+
+                                Thread.Sleep(550);
+
+                                sensors = serialPort1.ReadExisting(); ;
+                                int angStart = sensors.IndexOf("Y");
+
+                                int angEnd = -1;
+                                if (angStart > 0)
+                                    angEnd = angStart + 6;
+
+                                string angS = sensors.Substring(angStart + 1, angEnd - angStart - 1);
+                                float angle;
+
+                                System.Globalization.NumberStyles style;
+                                System.Globalization.CultureInfo culture;
+                                style = System.Globalization.NumberStyles.Number |
+                                        System.Globalization.NumberStyles.AllowCurrencySymbol;
+                                culture = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
+
+
+                                if (Single.TryParse(angS, style, culture, out angle))
+                                {
                                     _Fill_txtAngle((angle - angOffset).ToString());
-                            }
-                                
+                                }
 
-                            if (SharingData.X.Count == 0)
-                            {
-                                SharingData.X.Add((encoder - encOffset) * dis);
-                                SharingData.Y.Add(angle - angOffset);
-                            }
-                            else if (SharingData.X.Last() < (encoder - encOffset) * dis)
-                            {
-                                SharingData.X.Add((encoder - encOffset) * dis);
-                                SharingData.Y.Add(angle - angOffset);
-                            }
-                            else
-                            {
-                                SharingData.X.Add(SharingData.X.Last());
-                                SharingData.Y.Add(angle - angOffset);
-                            }
 
+                                if (SharingData.X.Count == 0)
+                                {
+                                    SharingData.X.Add((encoder - encOffset) * dis);
+                                    SharingData.Y.Add(angle - angOffset);
+                                }
+                                else if (SharingData.X.Last() < (encoder - encOffset) * dis)
+                                {
+                                    SharingData.X.Add((encoder - encOffset) * dis);
+                                    SharingData.Y.Add(angle - angOffset);
+                                }
+                                else
+                                {
+                                    SharingData.X.Add(SharingData.X.Last());
+                                    SharingData.Y.Add(angle - angOffset);
+                                }
+                            }
                             msg = new byte[4] { (byte)'<', (byte)'L', (byte)valueTrbLighting, (byte)'>' };
                             serialPort1.Write(msg, 0, msg.Length);
                             Thread.Sleep(5);
@@ -391,6 +411,7 @@ namespace SewerRobot
             System.Drawing.Point pipeSizePoint = new System.Drawing.Point();
             System.Drawing.Point anglePoint = new System.Drawing.Point();
             System.Drawing.Point distancePoint = new System.Drawing.Point();
+            System.Drawing.Point directionPoint = new System.Drawing.Point();
             contractorPoint.X = videoWidth;
             contractorPoint.Y = 25;
             employeePoint.X = videoWidth;
@@ -409,6 +430,8 @@ namespace SewerRobot
             pipeSizePoint.Y = 50;
             distancePoint.X = videoWidth;
             distancePoint.Y = 120;
+            directionPoint.X = videoWidth;
+            directionPoint.Y = 85;
             anglePoint.X = videoSourcePlayer.Left;
             anglePoint.Y = 110;
 
@@ -423,6 +446,7 @@ namespace SewerRobot
             g.DrawString(txtDate.Text, myFont, brush, videoSourcePlayer.Left, 90);
             g.DrawString(timeState + txtHour.Text + ":" + txtMinute.Text, myFont, brush, videoSourcePlayer.Left, 120);
             //g.DrawString("شیب لوله: " + txtAngle.Text, myFont, brush, videoSourcePlayer.Left, 180);
+            g.DrawString("جهت جریان: " + flowDirection, myFont, brush, directionPoint, RtoLFormat);
             g.DrawString("مسافت پیموده شده: " + txtDistance.Text, myFont, brush, distancePoint, RtoLFormat);
 
             if (rdbShowSError.Checked)
@@ -450,16 +474,16 @@ namespace SewerRobot
                     if (txtPercent.Enabled == true && txtStartHour.Enabled == true && txtDiameter.Enabled == true)
                     {
                         if (txtPercent.Text != "")
-                            temp += " " + "در موقعیت ساعت" + " " + txtStartHour.Text + " " + "با قطر" + " " + txtPercent.Text + "میلی متر" + " " + "(" + "نفوذ به داخل لوله" + txtPercent.Text + "%" + ")";
+                            temp += " " + "در موقعیت ساعت" + " " + txtStartHour.Text + " " + "با قطر" + " " + txtPercent.Text + "م.م" + " " + "(" + "نفوذ به داخل لوله" + txtPercent.Text + "%" + ")";
                         else
-                            temp += " " + "در موقعیت ساعت" + " " + txtStartHour.Text + " " + "با قطر" + txtPercent.Text + "میلی متر";
+                            temp += " " + "در موقعیت ساعت" + " " + txtStartHour.Text + " " + "با قطر" + txtPercent.Text + "م.م";
                     }
                     else if (txtDiameter.Enabled == true && txtStartHour.Enabled == true)
                     {
                         if (txtEndHour.Text != "")
                             temp += " " + "از ساعت" + " " + txtStartHour.Text + " " + "تا ساعت" + " " + txtEndHour.Text;
                         else
-                            temp += " " + "در موقعیت ساعت" + " " + txtStartHour.Text + "با قطر" + txtDiameter.Text + "میلی متر";
+                            temp += " " + "در موقعیت ساعت" + " " + txtStartHour.Text + "با قطر" + txtDiameter.Text + "م.م";
                     }
                     else if (txtStartHour.Enabled == true)
                     {
@@ -559,6 +583,9 @@ namespace SewerRobot
                 case "500":
                     dis = 3.900F;//3.662F;
                     break;
+                case "600":
+                    dis = 3.905F;//3.662F;
+                    break;
                 case "900":
                     dis = 4.050F;//3.662F;
                     break;
@@ -615,6 +642,8 @@ namespace SewerRobot
                 sheet.Range["G8"].Text = cmbDutyOfPipe.SelectedItem.ToString();
                 sheet.Range["J5"].Text = cmbPipeShape.SelectedItem.ToString();
                 sheet.Range["J7"].Text = txtDistance.Text;
+                sheet.Range["J6"].Text = cmbLocation.SelectedItem.ToString();
+
                 if(chkBranch.Checked)
                 {
                     sheet.Range["J8"].Text = "دارای انشعاب";
@@ -623,7 +652,7 @@ namespace SewerRobot
                 {
                     sheet.Range["J8"].Text = "بدون انشعاب";
                 }
-                string path = System.IO.Path.Combine(gozareshSubDir, "Report.xlsx");
+                string path = System.IO.Path.Combine(gozareshSubDir, "Report-" + txtStartAddress.Text + '+' + txtEndAddress.Text + ".xlsx");
                 workbook.SaveToFile(path, ExcelVersion.Version2013);
             }
             if (videoFileWriter.IsOpen)//(cameraSelection)
@@ -645,6 +674,7 @@ namespace SewerRobot
             cmbProcedure.SelectedIndex = 1;
             cmbDutyOfPipe.SelectedIndex = 1;
             cmbPipeShape.SelectedIndex = 0;
+            cmbLocation.SelectedIndex = 0;
 
             btnNewProject.Enabled = false;
             //Az bein bordan kadre atraf
@@ -964,10 +994,33 @@ namespace SewerRobot
 
         private void btnAvgAngle_Click(object sender, EventArgs e)
         {
+            Random rnd = new Random();
+            for (int i = 0; i < 6654; i += 35)
+            {
+                float tmpRnd = rnd.Next(-75, 90);
+                float tmpAng = tmpRnd / 1000F;
+                SharingData.Y.Add(tmpAng);
+                SharingData.X.Add(i);
+            }
             SharingData.ReportSubDir = gozareshSubDir;
             frmAngle fa = new frmAngle();
             fa.Show();
-            double sum = 0;
+            
+            //if (SharingData.X.Count == 0)
+            //{
+            //    SharingData.X.Add((encoder - encOffset) * dis);
+            //    SharingData.Y.Add(angle - angOffset);
+            //}
+            //else if (SharingData.X.Last() < (encoder - encOffset) * dis)
+            //{
+            //    SharingData.X.Add((encoder - encOffset) * dis);
+            //    SharingData.Y.Add(angle - angOffset);
+            //}
+            //else
+            //{
+            //    SharingData.X.Add(SharingData.X.Last());
+            //    SharingData.Y.Add(angle - angOffset);
+            //}
             //int k = sheet2.Rows.Count();
             //int k2 = sheet2.Columns.Count();
             //for (int i = 0; i < sheet2.Rows.Count(); i++)
@@ -1022,6 +1075,7 @@ namespace SewerRobot
                     {
                         sheet.Range["C" + (rowCounterImageReport).ToString()].Text = standardErorr;
                     }
+                    sheet.Range["C" + (rowCounterImageReport + 2).ToString()].Text = txtDistance.Text;
                     rowCounterImageReport += 7;
                     Thread.Sleep(750);
                     btnGetImage.Enabled = true;
@@ -1666,6 +1720,11 @@ namespace SewerRobot
 
             Single.TryParse(txtAngOffset.Text, style, culture, out angOffset);
           
+        }
+
+        private void cmbDirection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            flowDirection = cmbDirection.SelectedItem.ToString();
         }
 
     }
