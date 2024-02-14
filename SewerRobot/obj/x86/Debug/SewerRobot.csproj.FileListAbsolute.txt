@@ -178,3 +178,6 @@ H:\SewerRobot-NewRobot-1395.11.24\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.re
 H:\SewerRobot-NewRobot-1395.11.24\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
 H:\SewerRobot-NewRobot-1395.11.24\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
 H:\SewerRobot-NewRobot-1395.11.24\SewerRobot\obj\x86\Debug\SewerRobot.csprojResolveAssemblyReference.cache
+H:\SewerRobot-NewRobot-1396.01.27\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+H:\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.exe
+H:\SewerRobot-NewRobot-1396.01.27\SewerRobot\obj\x86\Debug\SewerRobot.pdb
