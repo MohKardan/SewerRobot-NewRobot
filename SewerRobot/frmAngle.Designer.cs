@@ -42,9 +42,10 @@
             // 
             this.chartAngle.BorderlineWidth = 2;
             this.chartAngle.BorderSkin.BorderWidth = 2;
-            chartArea1.AxisX.Interval = 720D;
+            chartArea1.AxisX.LabelStyle.Format = "#.##";
             chartArea1.AxisX.MinorGrid.Interval = double.NaN;
             chartArea1.AxisX.MinorTickMark.Interval = double.NaN;
+            chartArea1.AxisY.LabelStyle.Format = "#.##";
             chartArea1.AxisY.MajorGrid.Interval = 0D;
             chartArea1.Name = "ChartArea1";
             this.chartAngle.ChartAreas.Add(chartArea1);
@@ -90,6 +91,7 @@
             this.Controls.Add(this.chartAngle);
             this.Name = "frmAngle";
             this.Text = "Angle Plot";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAngle_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.chartAngle)).EndInit();
             this.statusAvgAngle.ResumeLayout(false);
             this.statusAvgAngle.PerformLayout();

@@ -31,6 +31,7 @@ namespace SewerRobot
     {
         private float dis = 3.71F;
         private bool resetAutonics = false;
+        private bool camUp = false, camDown = false, camRight = false, camLeft = false;
         private int secondTemp = 0;
         Error test = new Error();
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -55,6 +56,9 @@ namespace SewerRobot
         //private bool cameraSelection = false;   //for checking if camera is selected
         private bool additionalText = false;
 
+        private char cameraState = 'J';
+        private int camSpeed;
+       
         //Create a workbook
         //private Workbook workbook2 = new Workbook();
         //private Worksheet sheet2;
@@ -66,7 +70,7 @@ namespace SewerRobot
 
 
         private int encOffset = 0;
-        float angOffset = -2.9f;
+        float angOffset = 0.0f;
         private int encoder;
         private float distance = 0;
 
@@ -91,7 +95,7 @@ namespace SewerRobot
         bool isForward = false;
         bool isBackward = false;
         Task taskControl;
-
+        private int taskCounter = 0;
         // draw circle variables
         float xCircle, yCircle, wCircle, hCircle, xP, yP;//, xRectangle, yRectangle, wRectangle, hRectangle; //Width, Height;
         bool isDown = false, isDone = false, isSizeNS_Bottom = false, isSizeNS_Up = false, isSizeWE_Left = false, isSizeWE_Right = false, isSizeAll = false;
@@ -108,6 +112,11 @@ namespace SewerRobot
         int counterTakingPhoto = 0;
         string standardErorr;
         string flowDirection = "در جهت جریان";
+        Bitmap image1;
+
+        private bool encReset = false;
+
+        private float varTemperature = 26.2f, varPressure = 24.4f;
 
         private delegate void _SetDisplay(string Text);
 
@@ -163,126 +172,111 @@ namespace SewerRobot
                 MessageBox.Show(ex.Message + "txtDistance error");
             }
         }
+        //پر کردن تکست باکس لیزر
+        private void _Fill_txtLaser(string str)
+        {
+            try
+            {
+                if (txtLaser.InvokeRequired == true)
+                {
+                    _SetDisplay d = new _SetDisplay(_Fill_txtLaser);
+                    this.Invoke(d, new object[] { str });
+                }
+                else txtLaser.Text = str;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "txtDistance error");
+            }
+        }
+
+        //پر کردن تکست باکس انکودر
+        private void _Fill_txtEncoder(string str)
+        {
+            try
+            {
+                if (txtEncoder.InvokeRequired == true)
+                {
+                    _SetDisplay d = new _SetDisplay(_Fill_txtEncoder);
+                    this.Invoke(d, new object[] { str });
+                }
+                else txtEncoder.Text = str;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "انکودر خرابه");
+            }
+        }
+
         string encS;
         void Control()
         {
           
             while (true)
             {
-                Thread.Sleep(500);
+                Thread.Sleep(50);
+                taskCounter++;
                 if (serialPort1.IsOpen)
                 {
                     try
                     {
-                        if (resetAutonics)
-                        {
-                            //byte[] hexR = new byte[8] { 0x01, 0x05, 0x00, 0x00, 0x00, 0x00, 0xCD, 0xCA };    //reset Counter
-                            byte[] hexR = new byte[8] { 0x01, 0x06, 0x00, 0x3e, 0x00, 0x00, 0xe8, 0x06 };    //Start Counter
-                            serialPort1.Write(hexR, 0, 8);
-                            Thread.Sleep(20);
-                            byte[] readHexR = new byte[12];
-                            //serialPort1.DiscardNull = false;
-                            try
-                            {
-                                serialPort1.Read(readHexR, 0, 12);
-                            }
-                            catch (Exception exRC)
-                            {
-                                _Fill_lblError(exRC.Message);
-                            }
-                            resetAutonics = false;
-                            //btnDistanceOffsett.Enabled = true;
-                        }
-                        while (true)
-                        {
-                            byte[] hex = new byte[8] { 0x01, 0x04, 0x03, 0xeb, 0x00, 0x02, 0x01, 0xbb };    //Read Counter
-                            serialPort1.Write(hex, 0, 8);
-                            Thread.Sleep(100);
-                            byte[] readHex = new byte[12];
-                            //serialPort1.DiscardNull = false;
-                            try
-                            {
-                                serialPort1.Read(readHex, 0, 12);
-                            }
-                            catch (Exception exRC)
-                            {
-                                _Fill_lblError(exRC.Message);
-                            }
-                            //string test = serialPort1.ReadExisting();
-                            //readHex = Encoding.ASCII.GetBytes(test);
-                            //serialPort1.ReceivedBytesThreshold = 12;
-                            for (int i = 0; i < 12; i++)
-                            {
-                                if (readHex[i] == 1 && readHex[(i + 1) % 12] == 4 && readHex[(i + 2) % 12] == 4)
-                                {
-                                    byte[] tmpHex = new byte[4];
-                                    tmpHex[0] = readHex[(i + 4) % 12];
-                                    tmpHex[1] = readHex[(i + 3) % 12];
-                                    tmpHex[2] = readHex[(i + 6) % 12];
-                                    tmpHex[3] = readHex[(i + 5) % 12];
-                                    int tmp = BitConverter.ToInt32(tmpHex, 0);
-                                    float encTemp = (float)(tmp / 100.0);
-                                    distance = encTemp;
-                                    if (distance > 200) break;
-                                    _Fill_txtDistance(encTemp.ToString());
-                                    break;
-                                }
-                            }
-                            if (distance < 200) break;
-                        }
                         if (rotationCamera)
                         {
                             serialPort1.Write(msgCamera, 0, msgCamera.Length);
 
-                            //Thread.Sleep(20);
-                            //if(msgCamera[4]==0)
-                            //{
-                            //    serialPort1.Write(msgCamera, 0, msgCamera.Length);
-
-                            //    Thread.Sleep(20);
-                            //    rotationCamera = false;
-                            //}
                             rotationCamera = false;
                         }
-                        else
-                        { 
+                        else if(taskCounter >= 10)
+                        {
+                            taskCounter = 0;
+                            if (resetAutonics)
+                            {
+                                //byte[] hexR = new byte[8] { 0x01, 0x05, 0x00, 0x00, 0x00, 0x00, 0xCD, 0xCA };    //reset Counter
+                                byte[] hexR = new byte[8] { 0x01, 0x06, 0x00, 0x3e, 0x00, 0x00, 0xe8, 0x06 };    //Start Counter
+                                serialPort1.Write(hexR, 0, 8);
+                                resetAutonics = false;
+                            }
+                            while (true)
+                            {
+                                byte[] hex = new byte[8] { 0x01, 0x04, 0x03, 0xeb, 0x00, 0x02, 0x01, 0xbb };    //Read Counter
+                                serialPort1.Write(hex, 0, 8);
+                                Thread.Sleep(100);
+                                byte[] readHex = new byte[12];
+                                //serialPort1.DiscardNull = false;
+                                try
+                                {
+                                    serialPort1.Read(readHex, 0, 12);
+                                }
+                                catch (Exception exRC)
+                                {
+                                    _Fill_lblError(exRC.Message);
+                                }
+                                //string test = serialPort1.ReadExisting();
+                                //readHex = Encoding.ASCII.GetBytes(test);
+                                //serialPort1.ReceivedBytesThreshold = 12;
+                                for (int i = 0; i < 12; i++)
+                                {
+                                    if (readHex[i] == 1 && readHex[(i + 1) % 12] == 4 && readHex[(i + 2) % 12] == 4)
+                                    {
+                                        byte[] tmpHex = new byte[4];
+                                        tmpHex[0] = readHex[(i + 4) % 12];
+                                        tmpHex[1] = readHex[(i + 3) % 12];
+                                        tmpHex[2] = readHex[(i + 6) % 12];
+                                        tmpHex[3] = readHex[(i + 5) % 12];
+                                        int tmp = BitConverter.ToInt32(tmpHex, 0);
+                                        float encTemp = (float)(tmp / 100.0);
+                                        distance = encTemp;
+                                        if (distance > 200) break;
+                                        _Fill_txtDistance(encTemp.ToString());
+                                        break;
+                                    }
+                                }
+                                if (distance < 200) break;
+                            }
                             byte[] msg;
                             string sensors;
-
-                            //if (isBackward)
-                            //{
-                            //    msg = new byte[9] { (byte)'<', (byte)'B', (byte)'>', (byte)'<', (byte)'B', (byte)'>', (byte)'<', (byte)'B', (byte)'>' };
-                            //    serialPort1.Write(msg, 0, msg.Length);
-                            //    Thread.Sleep(5);
-                            //}
-                            //else
-                            //{
-                            //    msg = new byte[9] { (byte)'<', (byte)'F', (byte)'>', (byte)'<', (byte)'F', (byte)'>', (byte)'<', (byte)'F', (byte)'>' };
-                            //    serialPort1.Write(msg, 0, msg.Length);
-                            //    Thread.Sleep(5);
-                            //}
-
-
-
-
-
-                            //msg = new byte[3] { (byte)'<', (byte)'E', (byte)'>' };
-                            //serialPort1.Write(msg, 0, msg.Length);
-
-                            //Thread.Sleep(5);
-
-                            //sensors = serialPort1.ReadLine();
-                            //int encStart = sensors.IndexOf("E");
-                            //if(encStart==-1) encStart = sensors.IndexOf("?");
-                            //int encEnd = sensors.IndexOf("e");
-
-                            //if (encStart > -1 && encEnd > -1)
-                            //    encS = sensors.Substring(encStart + 1, encEnd - encStart - 1);
-
-                            //if (int.TryParse(encS, out encoder))
-                            //    _Fill_txtDistance(((Int32)((encoder - encOffset) * dis)).ToString());
-
-                            //Thread.Sleep(20);
 
                             if (chkAngle.Checked == true)
                             {
@@ -330,10 +324,46 @@ namespace SewerRobot
                                     SharingData.Y.Add(angle - angOffset);
                                 }
                             }
-                            Thread.Sleep(30);
-                            msg = new byte[6] { (byte)'<', (byte)'M', (byte)'D', (byte)'0', (byte)valueTrbLighting, (byte)'>' };
-                            serialPort1.Write(msg, 0, msg.Length);
-                            Thread.Sleep(0);
+                            if (chkLaser.Checked)
+                            {
+                                //خواندن لیزر
+                                byte[] laser = new byte[3] { (byte)'<', (byte)'L', (byte)'>' };
+                                serialPort1.Write(laser, 0, 3);
+                                Thread.Sleep(15);
+                                string readLaser;
+                                readLaser = serialPort1.ReadLine();
+                                int lStart = readLaser.IndexOf('<');
+                                int lEnd = readLaser.IndexOf('>');
+                                if (lStart != -1 && lEnd != -1)
+                                {
+                                    //lblError.Text = "l";
+                                    string tempL = readLaser.Substring(lStart + 1, lEnd - lStart - 1);
+                                    _Fill_txtLaser(tempL);
+                                }
+                            }
+                            if (chkEncoder.Checked)
+                            {
+                                //خواندن انکودر پن
+                                if (encReset)
+                                {
+                                    encReset = false;
+                                    byte[] encRes = new byte[4] { (byte)'<', (byte)'Z', (byte)'E', (byte)'>' };
+                                    serialPort1.Write(encRes, 0, 4);
+                                    Thread.Sleep(10);
+                                }
+                                byte[] enc = new byte[3] { (byte)'<', (byte)'E', (byte)'>' };
+                                serialPort1.Write(enc, 0, 3);
+                                Thread.Sleep(15);
+                                string readEnc;
+                                readEnc = serialPort1.ReadLine();
+                                int eStart = readEnc.IndexOf('<');
+                                int eEnd = readEnc.IndexOf('>');
+                                if (eStart != -1 && eEnd != -1)
+                                {
+                                    string tempE = readEnc.Substring(eStart + 1, eEnd - eStart - 1);
+                                    _Fill_txtEncoder(tempE);
+                                }
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -475,7 +505,7 @@ namespace SewerRobot
                          DateTime.Now.Hour * 10000 +
                          DateTime.Now.Minute * 100 +
                          DateTime.Now.Second).ToString() + ".flv");
-                    videoFileWriter.Open(path, videoWidth, videoHeight, (int)fps, VideoCodec.FLV1, videoWidth * videoHeight * (int)fps);
+                    videoFileWriter.Open(path, videoWidth, videoHeight, 30, VideoCodec.FLV1, videoWidth * videoHeight * 30); // * (int)fps);
 
                 }
                 recordStat = !recordStat;
@@ -525,6 +555,7 @@ namespace SewerRobot
 
         private void videoSourcePlayer_NewFrame(object sender, ref Bitmap image)
         {
+            image1 = image;
             Graphics g = Graphics.FromImage(image);
             SolidBrush brush;
 
@@ -532,6 +563,34 @@ namespace SewerRobot
             brush = new SolidBrush(clsMain.EndColor);
 
             StringFormat RtoLFormat = new StringFormat(StringFormatFlags.DirectionRightToLeft);
+
+            #region Laser Points
+            
+            Pen myPen = new Pen(Color.ForestGreen, 1.5F);
+            myPen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            myPen.Color = Color.Gray;
+
+            Pen measuringPen = new Pen(Color.Red, 3F);
+            if (!pl1 && btnPL1.BackColor == Color.Green)
+            {
+                g.DrawEllipse(measuringPen, pl1_Coordinate.X * videoWidth / 720 - 1, pl1_Coordinate.Y * videoHeight / 480 - 1, 3, 3);
+            }
+            if (!pl2 && btnPL2.BackColor == Color.Green)
+            {
+
+                g.DrawEllipse(measuringPen, pl2_Coordinate.X * videoWidth / 720 - 1, pl2_Coordinate.Y * videoHeight / 480 - 1, 3, 3);
+            }
+            if (!po1 && btnPO1.BackColor == Color.Green)
+            {
+
+                g.DrawEllipse(measuringPen, po1_Coordinate.X * videoWidth / 720 - 1, po1_Coordinate.Y * videoHeight / 480 - 1, 3, 3);
+            }
+            if (!po2 && btnPO2.BackColor == Color.Green)
+            {
+
+                g.DrawEllipse(measuringPen, po2_Coordinate.X * videoWidth / 720 - 1, po2_Coordinate.Y * videoHeight / 480 - 1, 3, 3);
+            }
+            #endregion //laser Points
 
             System.Drawing.Point employerPoint = new System.Drawing.Point();
             System.Drawing.Point contractorPoint = new System.Drawing.Point();
@@ -544,6 +603,8 @@ namespace SewerRobot
             System.Drawing.Point anglePoint = new System.Drawing.Point();
             System.Drawing.Point distancePoint = new System.Drawing.Point();
             System.Drawing.Point directionPoint = new System.Drawing.Point();
+            //System.Drawing.Point inclinationPoint = new System.Drawing.Point();
+
             contractorPoint.X = videoWidth;
             contractorPoint.Y = 25;
             employerPoint.X = videoWidth;
@@ -564,9 +625,9 @@ namespace SewerRobot
             distancePoint.Y = 120;
             directionPoint.X = videoWidth;
             directionPoint.Y = 85;
-            anglePoint.X = videoSourcePlayer.Left;
-            anglePoint.Y = 110;
-
+            anglePoint.X = videoWidth;
+            anglePoint.Y = 155;
+            
 
             //txtContractor.Text = StringFormatFlags.DirectionRightToLeft;
             g.DrawString(txtContractor.Text, myFont, brush, contractorPoint, RtoLFormat);
@@ -577,20 +638,22 @@ namespace SewerRobot
             g.DrawString("سایز لوله:" + pipeSize + "م.م", myFont, brush, videoSourcePlayer.Left, 60);
             g.DrawString(txtDate.Text, myFont, brush, videoSourcePlayer.Left, 90);
             g.DrawString(timeState + txtHour.Text + ":" + txtMinute.Text, myFont, brush, videoSourcePlayer.Left, 120);
-            //g.DrawString("شیب لوله: " + txtAngle.Text, myFont, brush, videoSourcePlayer.Left, 180);
+            
             g.DrawString("جهت جریان: " + flowDirection, myFont, brush, directionPoint, RtoLFormat);
             g.DrawString("مسافت پیموده شده: " + txtDistance.Text, myFont, brush, distancePoint, RtoLFormat);
+            if(chkAngle.Checked)
+            g.DrawString("شیب لوله: " + txtAngle.Text, myFont, brush, anglePoint, RtoLFormat);
 
             if (rdbShowSError.Checked)
             {
-                string temp = test.ErrorTypeTemp + " " + test.ErrorCodeTemp;
+                string temp = test.ErrorTypeTemp + "" + test.ErrorCodeTemp;
                 if (rdbStructureError.Checked == true)
                 {
                     if (txtPercent.Enabled == true)
                     {
                         temp += "%" + txtPercent.Text;
                         if (test.EndNameTemp != "")
-                            temp += " " + test.EndNameTemp;
+                            temp += "" + test.EndNameTemp;
                     }
                     if (txtStartHour.Enabled == true)
                     {
@@ -661,12 +724,12 @@ namespace SewerRobot
             {
                 g.DrawString(txtAddTextR.Text, myFont, new SolidBrush(clsR.EndColor), RPoint, RtoLFormat);
             }
-                if (recordStat)
+            if (recordStat)
             {
                 try
                 {
                     videoFileWriter.WriteVideoFrame(image);
-                } 
+                }
                 catch (AccessViolationException ex)
                 { throw ex; }
             }
@@ -771,7 +834,16 @@ namespace SewerRobot
 
         private void btnStopRecord_Click(object sender, EventArgs e)
         {
-            if (gozareshSubDir != null)
+            SharingData.ReportSubDir = gozareshSubDir;
+            //frmAngle fa = new frmAngle();
+            //fa.WindowState = FormWindowState.Maximized;
+            //fa.Show();
+            //SharingData.ReportSubDir = gozareshSubDir;
+            //frmHeight faH = new frmHeight();
+            //faH.WindowState = FormWindowState.Maximized;
+            //faH.Show();
+            //Thread.Sleep(100);
+            if (gozareshSubDir != null && workbook != null && sheet != null)
             {
                 sheet.Range["G6"].Text = cmbPipeMaterial.SelectedItem.ToString();
                 sheet.Range["G7"].Text = cmbProcedure.SelectedItem.ToString();
@@ -791,16 +863,32 @@ namespace SewerRobot
                 string path = System.IO.Path.Combine(gozareshSubDir, "Report-" + txtStartAddress.Text + '+' + txtEndAddress.Text + ".xlsx");
                 workbook.SaveToFile(path, ExcelVersion.Version2013);
             }
+
+            frmAngle fa = new frmAngle();
+            fa.WindowState = FormWindowState.Maximized;
+            fa.Show();
+            frmHeight faH = new frmHeight();
+            faH.WindowState = FormWindowState.Maximized;
+            faH.Show();
+            Thread.Sleep(100);
+            fa.Close();
+            faH.Close();
+            SharingData.X.Clear();
+            SharingData.Y.Clear();
+
             if (videoFileWriter.IsOpen)//(cameraSelection)
             {
                 recordStat = false;
                 videoFileWriter.Close();
-                videoSourcePlayer.VideoSource.SignalToStop();
+                //videoSourcePlayer.VideoSource.SignalToStop();
+                MessageBox.Show("ویدئو ذخیره شد لطفا چک کنید!");
                 btnRecord.Image = SewerRobot.Properties.Resources.Record;
+                
             }
             //Save the file
             //workbook2.SaveToFile("C:/Users/javad/Desktop/Shib.xlsx");
-            workbook.Dispose();
+            //workbook.Dispose();
+            
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -879,6 +967,7 @@ namespace SewerRobot
                 connectionState = false;
                 //MessageBox.Show(".اتصال یو اس بی یافت نشد");
             }
+
         }
 
         public void comPortConnect(string baudrate, string portname)
@@ -1078,7 +1167,16 @@ namespace SewerRobot
                 btnRec.Visible = !(btnRec.Visible);
                 lblRec.Visible = !(lblRec.Visible);
             }
-    
+            if(varPressure>12)
+            varPressure -= 0.0024f;
+            else
+            {
+                lblPressure.BackColor = Color.Red;
+            }
+            lblPressure.Text = varPressure.ToString("#.##");
+            Random rnd = new Random();
+            varTemperature = (float)rnd.Next(2600, 2750) / 100.1f;
+            lblTemperature.Text = varTemperature.ToString("#.##");
         }
 
         private void UpdateTime()
@@ -1119,14 +1217,17 @@ namespace SewerRobot
 
         private void btnAvgAngle_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            for (int i = 0; i < 6654; i += 35)
-            {
-                float tmpRnd = rnd.Next(-75, 90);
-                float tmpAng = tmpRnd / 1000F;
-                SharingData.Y.Add(tmpAng);
-                SharingData.X.Add(i);
-            }
+            //SharingData.X.Clear();
+            //SharingData.Y.Clear();
+            //Random rnd = new Random();
+            ////float tmpPosition = 0;
+            //for (float i = 0; i < 66; )
+            //{
+            //    float tmpRnd = rnd.Next(508, 512);
+            //    float tmpAng = (20.0f / 1024.0f) * (float)tmpRnd - 10.0f;
+            //    SharingData.Y.Add(tmpAng - angOffset);
+            //    SharingData.X.Add(i += (float)(rnd.Next(10, 27) / 100.0f));
+            //}
             SharingData.ReportSubDir = gozareshSubDir;
             frmAngle fa = new frmAngle();
             fa.Show();
@@ -1215,7 +1316,101 @@ namespace SewerRobot
             }
         }
 
-        
+        private void btnCameraTiltUp_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void btnCameraPanRight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCameraTiltDown_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCameraPanLeft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCameraTiltUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)(64 - trbSpeedRotation.Value), (byte)'>' };
+                rotationCamera = true;
+            }
+        }
+
+        private void btnCameraTiltUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)64, (byte)'>' };
+                rotationCamera = true;
+            }
+        }
+
+        private void btnCameraTiltDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)(trbSpeedRotation.Value + 64), (byte)'>' };
+                rotationCamera = true;
+            }
+        }
+
+        private void btnCameraTiltDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)64, (byte)'>' };
+                rotationCamera = true;
+            }
+        }
+
+        private void btnCameraPanRight_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)(192 - trbSpeedRotation.Value), (byte)'>' };
+                rotationCamera = true;
+            }
+        }
+
+        private void btnCameraPanRight_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)192, (byte)'>' };
+                rotationCamera = true;
+            }
+        }
+
+        private void btnCameraPanLeft_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)(byte)(trbSpeedRotation.Value + 192), (byte)'>' };
+                rotationCamera = true;
+            }
+        }
+
+        private void btnCameraPanLeft_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)192, (byte)'>' };
+                rotationCamera = true;
+            }
+        }
+
+
+
         private void cmbErrorType_SelectedIndexChanged(object sender, EventArgs e)
         {
             string[] tmp;
@@ -1329,155 +1524,176 @@ namespace SewerRobot
 
         private void videoSourcePlayer_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            Pen myPen = new Pen(Color.ForestGreen, 1.5F);
-            myPen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            myPen.Color = Color.Gray;
+            //Bitmap bitmap = null;
 
-            Pen measuringPen = new Pen(Color.Red, 2F);
-            if(!pl1 && btnPL1.BackColor == Color.Green)
-            {
+            //if (this.videoSourcePlayer.GetCurrentVideoFrame().Clone()!=null)
+            //    bitmap = (Bitmap)this.videoSourcePlayer.GetCurrentVideoFrame().Clone();
 
-                g.DrawEllipse(measuringPen, pl1_Coordinate.X, pl1_Coordinate.Y, 5, 5);
-            }
-            if (!pl2 && btnPL2.BackColor == Color.Green)
-            {
+            //Graphics g;
 
-                g.DrawEllipse(measuringPen, pl2_Coordinate.X, pl2_Coordinate.Y, 5, 5);
-            }
-            if (!po1 && btnPO1.BackColor == Color.Green)
-            {
+            //if(bitmap!=null)
+            //    g = Graphics.FromImage(bitmap);
+            //else
+            //    g = e.Graphics;
+            ////Graphics g = e.Graphics;
+            //Pen myPen = new Pen(Color.ForestGreen, 1.5F);
+            //myPen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            //myPen.Color = Color.Gray;
 
-                g.DrawEllipse(measuringPen, po1_Coordinate.X, po1_Coordinate.Y, 5, 5);
-            }
-            if (!po2 && btnPO2.BackColor == Color.Green)
-            {
+            //Pen measuringPen = new Pen(Color.Red, 2F);
+            //if (!pl1 && btnPL1.BackColor == Color.Green)
+            //{
 
-                g.DrawEllipse(measuringPen, po2_Coordinate.X, po2_Coordinate.Y, 5, 5);
-            }
-            if (isDown || isDone)
-            {
-                Pen circlePen = new Pen(Color.FromName(clsCircle.EndColor.Name), 2F);
-                g.DrawEllipse(circlePen, xCircle, yCircle, wCircle, hCircle);
-                SolidBrush brush;
+            //    g.DrawEllipse(measuringPen, pl1_Coordinate.X, pl1_Coordinate.Y, 5, 5);
+            //}
+            //if (!pl2 && btnPL2.BackColor == Color.Green)
+            //{
 
-                //brush = new SolidBrush(Color.FromName(clsMain.EndColor.Name));
+            //    g.DrawEllipse(measuringPen, pl2_Coordinate.X, pl2_Coordinate.Y, 5, 5);
+            //}
+            //if (!po1 && btnPO1.BackColor == Color.Green)
+            //{
 
-                brush = new SolidBrush(clsMain.EndColor);
+            //    g.DrawEllipse(measuringPen, po1_Coordinate.X, po1_Coordinate.Y, 5, 5);
+            //}
+            //if (!po2 && btnPO2.BackColor == Color.Green)
+            //{
 
-                StringFormat RtoLFormat = new StringFormat(StringFormatFlags.DirectionRightToLeft);
-                g.DrawString(wCircle.ToString(), myFont, brush, xCircle + wCircle / 2 + myFont.Size * 1.25f, yCircle - myFont.Size * 2, RtoLFormat);
-                g.DrawString(wCircle.ToString(), myFont, brush, xCircle , yCircle + hCircle/2 - myFont.Size, RtoLFormat);
+            //    g.DrawEllipse(measuringPen, po2_Coordinate.X, po2_Coordinate.Y, 5, 5);
+            //}
 
-                if (wCircle > 0 && hCircle > 0)
-                {//1
-                    dirCircle = 1;
-                    g.DrawRectangle(myPen, xCircle, yCircle, wCircle, hCircle);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle + hCircle - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
-                }
-                else if (wCircle < 0 && hCircle > 0)
-                {//2
-                    dirCircle = 2;
-                    g.DrawRectangle(myPen, xCircle + wCircle, yCircle, Math.Abs(wCircle), Math.Abs(hCircle));
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle + hCircle - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
-                }
-                else if (wCircle < 0 && hCircle < 0)
-                {//3
-                    dirCircle = 3;
-                    g.DrawRectangle(myPen, xCircle + wCircle, yCircle + hCircle, Math.Abs(wCircle), Math.Abs(hCircle));
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle + hCircle - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
-                }
-                else if (wCircle > 0 && hCircle < 0)
-                {//4
-                    dirCircle = 4;
-                    g.DrawRectangle(myPen, xCircle, yCircle + hCircle, Math.Abs(wCircle), Math.Abs(hCircle));
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle + hCircle - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
-                    g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
-                }
-            }
+            //if (isDown || isDone)
+            //{
+            //    Pen circlePen = new Pen(Color.FromName(clsCircle.EndColor.Name), 2F);
+            //    g.DrawEllipse(circlePen, xCircle, yCircle, wCircle, hCircle);
+            //    SolidBrush brush;
 
+            //    //brush = new SolidBrush(Color.FromName(clsMain.EndColor.Name));
 
+            //    brush = new SolidBrush(clsMain.EndColor);
+
+            //    StringFormat RtoLFormat = new StringFormat(StringFormatFlags.DirectionRightToLeft);
+            //    g.DrawString(wCircle.ToString(), myFont, brush, xCircle + wCircle / 2 + myFont.Size * 1.25f, yCircle - myFont.Size * 2, RtoLFormat);
+            //    g.DrawString(wCircle.ToString(), myFont, brush, xCircle , yCircle + hCircle/2 - myFont.Size, RtoLFormat);
+
+            //    if (wCircle > 0 && hCircle > 0)
+            //    {//1
+            //        dirCircle = 1;
+            //        g.DrawRectangle(myPen, xCircle, yCircle, wCircle, hCircle);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle + hCircle - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
+            //    }
+            //    else if (wCircle < 0 && hCircle > 0)
+            //    {//2
+            //        dirCircle = 2;
+            //        g.DrawRectangle(myPen, xCircle + wCircle, yCircle, Math.Abs(wCircle), Math.Abs(hCircle));
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle + hCircle - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
+            //    }
+            //    else if (wCircle < 0 && hCircle < 0)
+            //    {//3
+            //        dirCircle = 3;
+            //        g.DrawRectangle(myPen, xCircle + wCircle, yCircle + hCircle, Math.Abs(wCircle), Math.Abs(hCircle));
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle + hCircle - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
+            //    }
+            //    else if (wCircle > 0 && hCircle < 0)
+            //    {//4
+            //        dirCircle = 4;
+            //        g.DrawRectangle(myPen, xCircle, yCircle + hCircle, Math.Abs(wCircle), Math.Abs(hCircle));
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle / 2 - 2, yCircle + hCircle - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
+            //        g.DrawRectangle(System.Drawing.Pens.Black, xCircle + wCircle - 2, yCircle + hCircle / 2 - 2, 4, 4);
+            //    }
+            //}
+            
+            //if (recordStat)
+            //{
+            //    try
+            //    {
+            //        videoFileWriter.WriteVideoFrame(bitmap);
+            //    }
+            //    catch (AccessViolationException ex)
+            //    { throw ex; }
+            //}
         }
 
         private void videoSourcePlayer_MouseDown(object sender, MouseEventArgs e)
         {
-            #region Diminsion 
-                if(pl1)
-                {
-                    pl1_Coordinate.X=e.X;
-                    pl1_Coordinate.Y = e.Y;
-                    btnPL1.BackColor = Color.Green;
-                    btnPL1.Text = pl1_Coordinate.X + " , " + pl1_Coordinate.Y;
-                    pl1 = false;
-                }
-                if (pl2)
-                {
-                    pl2_Coordinate.X = e.X;
-                    pl2_Coordinate.Y = e.Y;
-                    btnPL2.BackColor = Color.Green;
-                    btnPL2.Text = pl2_Coordinate.X + " , " + pl2_Coordinate.Y;
-                    pl2 = false;
-                }
-                if (po1)
-                {
-                    po1_Coordinate.X = e.X;
-                    po1_Coordinate.Y = e.Y;
-                    btnPO1.BackColor = Color.Green;
-                    btnPO1.Text = po1_Coordinate.X + " , " + po1_Coordinate.Y;
-                    po1 = false;
-                }
-                if (po2)
-                {
-                    po2_Coordinate.X = e.X;
-                    po2_Coordinate.Y = e.Y;
-                    btnPO2.BackColor = Color.Green;
-                    btnPO2.Text = po2_Coordinate.X + " , " + po2_Coordinate.Y;
-                    po2 = false;
-                }
+            #region Diminsion
+            if (pl1)
+            {
+                pl1_Coordinate.X = e.X;
+                pl1_Coordinate.Y = e.Y;
+                btnPL1.BackColor = Color.Green;
+                btnPL1.Text = pl1_Coordinate.X + " , " + pl1_Coordinate.Y;
+                pl1 = false;
+            }
+            if (pl2)
+            {
+                pl2_Coordinate.X = e.X;
+                pl2_Coordinate.Y = e.Y;
+                btnPL2.BackColor = Color.Green;
+                btnPL2.Text = pl2_Coordinate.X + " , " + pl2_Coordinate.Y;
+                pl2 = false;
+            }
+            if (po1)
+            {
+                po1_Coordinate.X = e.X;
+                po1_Coordinate.Y = e.Y;
+                btnPO1.BackColor = Color.Green;
+                btnPO1.Text = po1_Coordinate.X + " , " + po1_Coordinate.Y;
+                po1 = false;
+            }
+            if (po2)
+            {
+                po2_Coordinate.X = e.X;
+                po2_Coordinate.Y = e.Y;
+                btnPO2.BackColor = Color.Green;
+                btnPO2.Text = po2_Coordinate.X + " , " + po2_Coordinate.Y;
+                po2 = false;
+            }
             #endregion Diminsion
-                if (chkDrawingTools.Checked)
+
+            if (chkDrawingTools.Checked)
+            {
+                if (isDone)
                 {
-                    if (isDone)
-                    {
 
-                        if ((e.X > xCircle + wCircle / 2 - 8 && e.X < xCircle + wCircle / 2 + 8) && (e.Y > yCircle - 3 && e.Y < yCircle + 6))
-                            isSizeNS_Up = true;
-                        else if ((e.X > xCircle + wCircle / 2 - 8 && e.X < xCircle + wCircle / 2 + 8) && (e.Y > yCircle + hCircle - 3 && e.Y < yCircle + hCircle + 6))
-                            isSizeNS_Bottom = true;
-                        else if ((e.X > xCircle - 3 && e.X < xCircle + 6) && (e.Y > yCircle + hCircle / 2 - 8 && e.Y < yCircle + hCircle / 2 + 8))
-                            isSizeWE_Left = true;
-                        else if ((e.X > xCircle + wCircle - 3 && e.X < xCircle + wCircle + 6) && (e.Y > yCircle + hCircle / 2 - 8 && e.Y < yCircle + hCircle / 2 + 8))
-                            isSizeWE_Right = true;
-                        else if ((e.X > xCircle + 4 && e.X < xCircle + wCircle - 4) && (e.Y > yCircle + 4 && e.Y < yCircle + hCircle + 4))
-                        {
-                            xP = e.X;
-                            yP = e.Y;
-                            isSizeAll = true;
-                        }
-                        else
-                            isDone = false;
-                    }
-                    if (!isSizeNS_Up && !isSizeNS_Bottom && !isSizeWE_Left && !isSizeWE_Right && !isSizeAll)
+                    if ((e.X > xCircle + wCircle / 2 - 8 && e.X < xCircle + wCircle / 2 + 8) && (e.Y > yCircle - 3 && e.Y < yCircle + 6))
+                        isSizeNS_Up = true;
+                    else if ((e.X > xCircle + wCircle / 2 - 8 && e.X < xCircle + wCircle / 2 + 8) && (e.Y > yCircle + hCircle - 3 && e.Y < yCircle + hCircle + 6))
+                        isSizeNS_Bottom = true;
+                    else if ((e.X > xCircle - 3 && e.X < xCircle + 6) && (e.Y > yCircle + hCircle / 2 - 8 && e.Y < yCircle + hCircle / 2 + 8))
+                        isSizeWE_Left = true;
+                    else if ((e.X > xCircle + wCircle - 3 && e.X < xCircle + wCircle + 6) && (e.Y > yCircle + hCircle / 2 - 8 && e.Y < yCircle + hCircle / 2 + 8))
+                        isSizeWE_Right = true;
+                    else if ((e.X > xCircle + 4 && e.X < xCircle + wCircle - 4) && (e.Y > yCircle + 4 && e.Y < yCircle + hCircle + 4))
                     {
-                        xCircle = e.X;
-                        yCircle = e.Y;
-                        wCircle = 0;
-                        hCircle = 0;
+                        xP = e.X;
+                        yP = e.Y;
+                        isSizeAll = true;
                     }
-
-                    isDown = true;
+                    else
+                        isDone = false;
                 }
+                if (!isSizeNS_Up && !isSizeNS_Bottom && !isSizeWE_Left && !isSizeWE_Right && !isSizeAll)
+                {
+                    xCircle = e.X;
+                    yCircle = e.Y;
+                    wCircle = 0;
+                    hCircle = 0;
+                }
+
+                isDown = true;
+            }
         }
 
         private void videoSourcePlayer_MouseMove(object sender, MouseEventArgs e)
@@ -1702,7 +1918,6 @@ namespace SewerRobot
             resetAutonics = true;
             SharingData.X.Clear();
             SharingData.Y.Clear();
-            //btnDistanceOffsett.Enabled = false;
         }
 
         private void btnBackward_Click(object sender, EventArgs e)
@@ -1781,16 +1996,27 @@ namespace SewerRobot
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void btnEncReset_Click(object sender, EventArgs e)
+        {
+            encReset = true;
+        }
+
+        private void btnHeight_Click(object sender, EventArgs e)
+        {
+            SharingData.ReportSubDir = gozareshSubDir;
+            frmHeight fa = new frmHeight();
+            fa.Show();
+        }
         #region Dimensions_Detection
         private void btnPL1_Click(object sender, EventArgs e)
         {
-            if(!pl1)
+            if (!pl1)
             {
                 btnPL1.BackColor = Color.Red;
                 pl1 = true;
             }
-            
         }
+
         private void btnPL2_Click(object sender, EventArgs e)
         {
             if (!pl2)
@@ -1799,6 +2025,7 @@ namespace SewerRobot
                 pl2 = true;
             }
         }
+
         private void btnPO1_Click(object sender, EventArgs e)
         {
             if (!po1)
@@ -1807,6 +2034,7 @@ namespace SewerRobot
                 po1 = true;
             }
         }
+
         private void btnPO2_Click(object sender, EventArgs e)
         {
             if (!po2)
@@ -1816,86 +2044,69 @@ namespace SewerRobot
             }
         }
         #endregion Dimensions_Detection
-
         private void btnMeasuring_Click(object sender, EventArgs e)
         {
-            double pointsDistance =(Math.Sqrt(Math.Pow((pl2_Coordinate.Y - pl1_Coordinate.Y), 2) + Math.Pow((pl2_Coordinate.X - pl1_Coordinate.X), 2)));
-            double objectPointsDistance = (Math.Sqrt(Math.Pow((po2_Coordinate.Y - po1_Coordinate.Y), 2) + Math.Pow((po2_Coordinate.X - po1_Coordinate.X), 2)));
-            double measuring = objectPointsDistance * (int.Parse(txtPointsDistance.Text)/10.0f) / pointsDistance;
+            
+            double pointsDistance = (Math.Sqrt(Math.Pow(((pl2_Coordinate.Y * videoHeight / 480 - 1) - (pl1_Coordinate.Y * videoHeight / 480 - 1)), 2) + Math.Pow(((pl2_Coordinate.X * videoWidth / 720 - 1) - (pl1_Coordinate.X * videoWidth / 720 - 1)), 2)));
+            double objectPointsDistance = (Math.Sqrt(Math.Pow(((po2_Coordinate.Y * videoHeight / 480 - 1) - (po1_Coordinate.Y * videoHeight / 480 - 1)), 2) + Math.Pow(((po2_Coordinate.X * videoWidth / 720 - 1) - (po1_Coordinate.X * videoWidth / 720 - 1)), 2)));
+            txtPercent.Text = (objectPointsDistance * int.Parse(txtPointsDistance.Text) * 100 / (pointsDistance * (int.Parse(cmbPipeSize.Text)))).ToString("#");
+            double measuring = objectPointsDistance * (int.Parse(txtPointsDistance.Text) / 10.0f) / pointsDistance;
             btnMeasuring.Text = measuring.ToString();
         }
 
-        private void btnCameraTiltUp_MouseDown(object sender, MouseEventArgs e)
+        private void btnTest_Click(object sender, EventArgs e)
         {
-            if (serialPort1.IsOpen)
+            if (videoSourcePlayer.IsRunning)
             {
-                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)(64 - trbSpeedRotation.Value), (byte)'>' };
-                rotationCamera = true;
+                try
+                {
+                    btnGetImage.Enabled = false;
+                    Thread.Sleep(250);
+                    string path = System.IO.Path.Combine(imageSubDir, (DateTime.Now.Year * 10000000000 +
+                         DateTime.Now.Month * 100000000 +
+                         DateTime.Now.Day * 1000000 +
+                         DateTime.Now.Hour * 10000 +
+                         DateTime.Now.Minute * 100 +
+                         DateTime.Now.Second).ToString() + ".jpg");
+                    Bitmap bitmap = (Bitmap)videoSourcePlayer.GetCurrentVideoFrame().Clone();
+                    bitmap.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    // create filter
+                    ResizeBicubic filter = new ResizeBicubic(300, 202);
+                    // apply the filter
+                    Bitmap newImage = filter.Apply(bitmap);
+                    path = System.IO.Path.Combine(tmpDir, (DateTime.Now.Year * 10000000000 +
+                         DateTime.Now.Month * 100000000 +
+                         DateTime.Now.Day * 1000000 +
+                         DateTime.Now.Hour * 10000 +
+                         DateTime.Now.Minute * 100 +
+                         DateTime.Now.Second).ToString() + "-r.jpg");
+                    newImage.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                    sheet.Pictures.Add(rowCounterImageReport, 7, path);
+
+                    if (rdbShowError.Checked)
+                    {
+                        sheet.Range["C" + (rowCounterImageReport).ToString()].Text = txtAddTextR.Text;
+                    }
+                    else if (rdbShowSError.Checked)
+                    {
+                        sheet.Range["C" + (rowCounterImageReport).ToString()].Text = standardErorr;
+                    }
+                    sheet.Range["C" + (rowCounterImageReport + 2).ToString()].Text = txtDistance.Text;
+                    rowCounterImageReport += 7;
+                    Thread.Sleep(750);
+                    btnGetImage.Enabled = true;
+                    //takePhoto.Play();
+                    counterTakingPhoto++;
+                    lblCounterTakingPhoto.Text = counterTakingPhoto.ToString();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
-        private void btnCameraTiltUp_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)64, (byte)'>' };
-                rotationCamera = true;
-            }
-        }
-
-        private void btnCameraTiltDown_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)(trbSpeedRotation.Value + 64), (byte)'>' };
-                rotationCamera = true;
-            }
-        }
-
-        private void btnCameraTiltDown_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)64, (byte)'>' };
-                rotationCamera = true;
-            }
-        }
-
-        private void btnCameraPanRight_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)(192 - trbSpeedRotation.Value), (byte)'>' };
-                rotationCamera = true;
-            }
-        }
-
-        private void btnCameraPanRight_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)192, (byte)'>' };
-                rotationCamera = true;
-            }
-        }
-
-        private void btnCameraPanLeft_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)(byte)(trbSpeedRotation.Value + 192), (byte)'>' };
-                rotationCamera = true;
-            }
-        }
-
-        private void btnCameraPanLeft_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                msgCamera = new byte[] { (byte)'<', (byte)'C', (byte)'R', (byte)192, (byte)'>' };
-                rotationCamera = true;
-            }
-        }
 
     }
 

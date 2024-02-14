@@ -74,7 +74,6 @@
             this.rdbShowError = new System.Windows.Forms.RadioButton();
             this.rdbNoShowError = new System.Windows.Forms.RadioButton();
             this.rdbShowSError = new System.Windows.Forms.RadioButton();
-            this.label13 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDiameter = new System.Windows.Forms.TextBox();
             this.txtPercent = new System.Windows.Forms.TextBox();
@@ -117,11 +116,11 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnMeasuring = new System.Windows.Forms.Button();
-            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.btnPO2 = new System.Windows.Forms.Button();
             this.btnPO1 = new System.Windows.Forms.Button();
             this.btnPL2 = new System.Windows.Forms.Button();
-            this.label25 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.txtPointsDistance = new System.Windows.Forms.TextBox();
             this.btnPL1 = new System.Windows.Forms.Button();
             this.btnNewProject = new System.Windows.Forms.Button();
@@ -144,7 +143,21 @@
             this.btnRecord = new System.Windows.Forms.Button();
             this.btnSelectCamera = new System.Windows.Forms.Button();
             this.lblRec = new System.Windows.Forms.Label();
+            this.btnTest = new System.Windows.Forms.Button();
             this.grpSensors = new System.Windows.Forms.GroupBox();
+            this.lblTemperature = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.lblPressure = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.btnHeight = new System.Windows.Forms.Button();
+            this.chkEncoder = new System.Windows.Forms.CheckBox();
+            this.chkLaser = new System.Windows.Forms.CheckBox();
+            this.btnLaser = new System.Windows.Forms.Button();
+            this.btnEncReset = new System.Windows.Forms.Button();
+            this.txtEncoder = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtLaser = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.chkAngle = new System.Windows.Forms.CheckBox();
             this.btnAngleOffsett = new System.Windows.Forms.Button();
@@ -187,7 +200,7 @@
             // lblFps
             // 
             this.lblFps.AutoSize = true;
-            this.lblFps.Location = new System.Drawing.Point(13, 27);
+            this.lblFps.Location = new System.Drawing.Point(87, 28);
             this.lblFps.Name = "lblFps";
             this.lblFps.Size = new System.Drawing.Size(33, 13);
             this.lblFps.TabIndex = 45;
@@ -370,7 +383,12 @@
             "400",
             "500",
             "600",
-            "900"});
+            "700",
+            "800",
+            "850",
+            "900",
+            "1000",
+            "1200"});
             this.cmbPipeSize.Location = new System.Drawing.Point(239, 236);
             this.cmbPipeSize.Name = "cmbPipeSize";
             this.cmbPipeSize.Size = new System.Drawing.Size(60, 28);
@@ -454,6 +472,7 @@
             // 
             // clsMain
             // 
+            this.clsMain.EndColor = System.Drawing.Color.Red;
             this.clsMain.Location = new System.Drawing.Point(212, 415);
             this.clsMain.Name = "clsMain";
             this.clsMain.Size = new System.Drawing.Size(75, 23);
@@ -598,7 +617,6 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.txtDiameter);
             this.tabPage2.Controls.Add(this.txtPercent);
@@ -676,21 +694,11 @@
             this.rdbShowSError.Text = "نمایش خطای استاندارد";
             this.rdbShowSError.UseVisualStyleBackColor = true;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label13.Location = new System.Drawing.Point(100, 220);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(57, 26);
-            this.label13.TabIndex = 72;
-            this.label13.Text = "قطر لوله";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(56, 217);
+            this.label5.Location = new System.Drawing.Point(91, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 26);
             this.label5.TabIndex = 71;
@@ -701,7 +709,7 @@
             this.txtDiameter.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtDiameter.Location = new System.Drawing.Point(15, 210);
             this.txtDiameter.Name = "txtDiameter";
-            this.txtDiameter.Size = new System.Drawing.Size(35, 33);
+            this.txtDiameter.Size = new System.Drawing.Size(70, 33);
             this.txtDiameter.TabIndex = 70;
             this.txtDiameter.Text = "   ";
             // 
@@ -710,7 +718,7 @@
             this.txtPercent.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtPercent.Location = new System.Drawing.Point(15, 168);
             this.txtPercent.Name = "txtPercent";
-            this.txtPercent.Size = new System.Drawing.Size(35, 33);
+            this.txtPercent.Size = new System.Drawing.Size(70, 33);
             this.txtPercent.TabIndex = 69;
             this.txtPercent.Text = "   ";
             // 
@@ -718,7 +726,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("B Nazanin", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.Location = new System.Drawing.Point(56, 168);
+            this.label11.Location = new System.Drawing.Point(91, 168);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(23, 30);
             this.label11.TabIndex = 68;
@@ -728,7 +736,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(77, 171);
+            this.label10.Location = new System.Drawing.Point(112, 171);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 26);
             this.label10.TabIndex = 67;
@@ -856,6 +864,7 @@
             // 
             // clsR
             // 
+            this.clsR.EndColor = System.Drawing.Color.Red;
             this.clsR.Location = new System.Drawing.Point(311, 306);
             this.clsR.Name = "clsR";
             this.clsR.Size = new System.Drawing.Size(69, 23);
@@ -902,10 +911,10 @@
             // chkDrawingTools
             // 
             this.chkDrawingTools.AutoSize = true;
-            this.chkDrawingTools.Location = new System.Drawing.Point(255, 269);
+            this.chkDrawingTools.Location = new System.Drawing.Point(296, 346);
             this.chkDrawingTools.Name = "chkDrawingTools";
             this.chkDrawingTools.Size = new System.Drawing.Size(49, 24);
-            this.chkDrawingTools.TabIndex = 25;
+            this.chkDrawingTools.TabIndex = 26;
             this.chkDrawingTools.Text = "فعال";
             this.chkDrawingTools.UseVisualStyleBackColor = true;
             // 
@@ -969,7 +978,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(78, 121);
+            this.button1.Location = new System.Drawing.Point(180, 139);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -1142,11 +1151,11 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.btnMeasuring);
-            this.tabPage5.Controls.Add(this.label26);
+            this.tabPage5.Controls.Add(this.label27);
             this.tabPage5.Controls.Add(this.btnPO2);
             this.tabPage5.Controls.Add(this.btnPO1);
             this.tabPage5.Controls.Add(this.btnPL2);
-            this.tabPage5.Controls.Add(this.label25);
+            this.tabPage5.Controls.Add(this.label28);
             this.tabPage5.Controls.Add(this.txtPointsDistance);
             this.tabPage5.Controls.Add(this.btnPL1);
             this.tabPage5.Location = new System.Drawing.Point(4, 29);
@@ -1159,78 +1168,78 @@
             // 
             // btnMeasuring
             // 
-            this.btnMeasuring.Location = new System.Drawing.Point(156, 214);
+            this.btnMeasuring.Location = new System.Drawing.Point(155, 219);
             this.btnMeasuring.Name = "btnMeasuring";
             this.btnMeasuring.Size = new System.Drawing.Size(93, 23);
-            this.btnMeasuring.TabIndex = 7;
+            this.btnMeasuring.TabIndex = 15;
             this.btnMeasuring.Text = "Measuring";
             this.btnMeasuring.UseVisualStyleBackColor = true;
             this.btnMeasuring.Click += new System.EventHandler(this.btnMeasuring_Click);
             // 
-            // label26
+            // label27
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(264, 45);
-            this.label26.Name = "label26";
-            this.label26.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label26.Size = new System.Drawing.Size(33, 20);
-            this.label26.TabIndex = 6;
-            this.label26.Text = "mm";
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(263, 50);
+            this.label27.Name = "label27";
+            this.label27.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label27.Size = new System.Drawing.Size(33, 20);
+            this.label27.TabIndex = 14;
+            this.label27.Text = "mm";
             // 
             // btnPO2
             // 
-            this.btnPO2.Location = new System.Drawing.Point(204, 185);
+            this.btnPO2.Location = new System.Drawing.Point(203, 190);
             this.btnPO2.Name = "btnPO2";
             this.btnPO2.Size = new System.Drawing.Size(75, 23);
-            this.btnPO2.TabIndex = 5;
+            this.btnPO2.TabIndex = 13;
             this.btnPO2.Text = "PO2";
             this.btnPO2.UseVisualStyleBackColor = true;
             this.btnPO2.Click += new System.EventHandler(this.btnPO2_Click);
             // 
             // btnPO1
             // 
-            this.btnPO1.Location = new System.Drawing.Point(123, 185);
+            this.btnPO1.Location = new System.Drawing.Point(122, 190);
             this.btnPO1.Name = "btnPO1";
             this.btnPO1.Size = new System.Drawing.Size(75, 23);
-            this.btnPO1.TabIndex = 4;
+            this.btnPO1.TabIndex = 12;
             this.btnPO1.Text = "PO1";
             this.btnPO1.UseVisualStyleBackColor = true;
             this.btnPO1.Click += new System.EventHandler(this.btnPO1_Click);
             // 
             // btnPL2
             // 
-            this.btnPL2.Location = new System.Drawing.Point(204, 156);
+            this.btnPL2.Location = new System.Drawing.Point(203, 161);
             this.btnPL2.Name = "btnPL2";
             this.btnPL2.Size = new System.Drawing.Size(75, 23);
-            this.btnPL2.TabIndex = 3;
+            this.btnPL2.TabIndex = 11;
             this.btnPL2.Text = "PL2";
             this.btnPL2.UseVisualStyleBackColor = true;
             this.btnPL2.Click += new System.EventHandler(this.btnPL2_Click);
             // 
-            // label25
+            // label28
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(310, 45);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(70, 20);
-            this.label25.TabIndex = 2;
-            this.label25.Text = "فاصله دو لیزر";
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(309, 50);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(70, 20);
+            this.label28.TabIndex = 10;
+            this.label28.Text = "فاصله دو لیزر";
             // 
             // txtPointsDistance
             // 
-            this.txtPointsDistance.Location = new System.Drawing.Point(204, 42);
+            this.txtPointsDistance.Location = new System.Drawing.Point(203, 47);
             this.txtPointsDistance.Name = "txtPointsDistance";
             this.txtPointsDistance.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtPointsDistance.Size = new System.Drawing.Size(54, 28);
-            this.txtPointsDistance.TabIndex = 1;
-            this.txtPointsDistance.Text = "55";
+            this.txtPointsDistance.TabIndex = 9;
+            this.txtPointsDistance.Text = "33";
             // 
             // btnPL1
             // 
-            this.btnPL1.Location = new System.Drawing.Point(123, 156);
+            this.btnPL1.Location = new System.Drawing.Point(122, 161);
             this.btnPL1.Name = "btnPL1";
             this.btnPL1.Size = new System.Drawing.Size(75, 23);
-            this.btnPL1.TabIndex = 0;
+            this.btnPL1.TabIndex = 8;
             this.btnPL1.Text = "PL1";
             this.btnPL1.UseVisualStyleBackColor = true;
             this.btnPL1.Click += new System.EventHandler(this.btnPL1_Click);
@@ -1238,7 +1247,7 @@
             // btnNewProject
             // 
             this.btnNewProject.Font = new System.Drawing.Font("B Mitra", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnNewProject.Location = new System.Drawing.Point(466, 21);
+            this.btnNewProject.Location = new System.Drawing.Point(479, 13);
             this.btnNewProject.Name = "btnNewProject";
             this.btnNewProject.Size = new System.Drawing.Size(84, 31);
             this.btnNewProject.TabIndex = 75;
@@ -1330,7 +1339,7 @@
             // btnRec
             // 
             this.btnRec.Image = global::SewerRobot.Properties.Resources.Recordin;
-            this.btnRec.Location = new System.Drawing.Point(302, 22);
+            this.btnRec.Location = new System.Drawing.Point(235, 34);
             this.btnRec.Name = "btnRec";
             this.btnRec.Size = new System.Drawing.Size(16, 16);
             this.btnRec.TabIndex = 68;
@@ -1365,13 +1374,11 @@
             this.trbSpeedRotation.LargeChange = 16;
             this.trbSpeedRotation.Location = new System.Drawing.Point(138, 120);
             this.trbSpeedRotation.Maximum = 63;
-            this.trbSpeedRotation.Minimum = 1;
             this.trbSpeedRotation.Name = "trbSpeedRotation";
-            this.trbSpeedRotation.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trbSpeedRotation.Size = new System.Drawing.Size(180, 45);
             this.trbSpeedRotation.SmallChange = 16;
             this.trbSpeedRotation.TabIndex = 64;
-            this.trbSpeedRotation.Value = 32;
+            this.trbSpeedRotation.Value = 56;
             // 
             // btnCameraPanLeft
             // 
@@ -1381,6 +1388,7 @@
             this.btnCameraPanLeft.TabIndex = 63;
             this.btnCameraPanLeft.Text = "Left";
             this.btnCameraPanLeft.UseVisualStyleBackColor = true;
+            this.btnCameraPanLeft.Click += new System.EventHandler(this.btnCameraPanLeft_Click);
             this.btnCameraPanLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCameraPanLeft_MouseDown);
             this.btnCameraPanLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnCameraPanLeft_MouseUp);
             // 
@@ -1392,6 +1400,7 @@
             this.btnCameraTiltDown.TabIndex = 62;
             this.btnCameraTiltDown.Text = "Down";
             this.btnCameraTiltDown.UseVisualStyleBackColor = true;
+            this.btnCameraTiltDown.Click += new System.EventHandler(this.btnCameraTiltDown_Click);
             this.btnCameraTiltDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCameraTiltDown_MouseDown);
             this.btnCameraTiltDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnCameraTiltDown_MouseUp);
             // 
@@ -1403,6 +1412,7 @@
             this.btnCameraPanRight.TabIndex = 61;
             this.btnCameraPanRight.Text = "Right";
             this.btnCameraPanRight.UseVisualStyleBackColor = true;
+            this.btnCameraPanRight.Click += new System.EventHandler(this.btnCameraPanRight_Click);
             this.btnCameraPanRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCameraPanRight_MouseDown);
             this.btnCameraPanRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnCameraPanRight_MouseUp);
             // 
@@ -1414,6 +1424,7 @@
             this.btnCameraTiltUp.TabIndex = 60;
             this.btnCameraTiltUp.Text = "Up";
             this.btnCameraTiltUp.UseVisualStyleBackColor = true;
+            this.btnCameraTiltUp.Click += new System.EventHandler(this.btnCameraTiltUp_Click);
             this.btnCameraTiltUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCameraTiltUp_MouseDown);
             this.btnCameraTiltUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnCameraTiltUp_MouseUp);
             // 
@@ -1465,14 +1476,38 @@
             this.lblRec.AutoSize = true;
             this.lblRec.Font = new System.Drawing.Font("B Mitra", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblRec.ForeColor = System.Drawing.Color.Red;
-            this.lblRec.Location = new System.Drawing.Point(273, 20);
+            this.lblRec.Location = new System.Drawing.Point(206, 32);
             this.lblRec.Name = "lblRec";
             this.lblRec.Size = new System.Drawing.Size(33, 21);
             this.lblRec.TabIndex = 69;
             this.lblRec.Text = "ضبط";
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(6, 50);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(61, 23);
+            this.btnTest.TabIndex = 77;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // grpSensors
             // 
+            this.grpSensors.Controls.Add(this.btnTest);
+            this.grpSensors.Controls.Add(this.lblTemperature);
+            this.grpSensors.Controls.Add(this.label32);
+            this.grpSensors.Controls.Add(this.lblPressure);
+            this.grpSensors.Controls.Add(this.label29);
+            this.grpSensors.Controls.Add(this.btnHeight);
+            this.grpSensors.Controls.Add(this.chkEncoder);
+            this.grpSensors.Controls.Add(this.chkLaser);
+            this.grpSensors.Controls.Add(this.btnLaser);
+            this.grpSensors.Controls.Add(this.btnEncReset);
+            this.grpSensors.Controls.Add(this.txtEncoder);
+            this.grpSensors.Controls.Add(this.label26);
+            this.grpSensors.Controls.Add(this.label25);
+            this.grpSensors.Controls.Add(this.txtLaser);
             this.grpSensors.Controls.Add(this.button2);
             this.grpSensors.Controls.Add(this.chkAngle);
             this.grpSensors.Controls.Add(this.btnAngleOffsett);
@@ -1482,11 +1517,11 @@
             this.grpSensors.Controls.Add(this.btnDistanceOffsett);
             this.grpSensors.Controls.Add(this.btnAvgAngle);
             this.grpSensors.Controls.Add(this.txtAngle);
+            this.grpSensors.Controls.Add(this.lblFps);
             this.grpSensors.Controls.Add(this.lblError);
             this.grpSensors.Controls.Add(this.txtDistance);
             this.grpSensors.Controls.Add(this.lblDistance);
             this.grpSensors.Controls.Add(this.label3);
-            this.grpSensors.Controls.Add(this.lblFps);
             this.grpSensors.Location = new System.Drawing.Point(583, 514);
             this.grpSensors.Name = "grpSensors";
             this.grpSensors.Size = new System.Drawing.Size(569, 178);
@@ -1494,9 +1529,132 @@
             this.grpSensors.TabStop = false;
             this.grpSensors.Text = "Sensors       ";
             // 
+            // lblTemperature
+            // 
+            this.lblTemperature.AutoSize = true;
+            this.lblTemperature.Location = new System.Drawing.Point(155, 150);
+            this.lblTemperature.Name = "lblTemperature";
+            this.lblTemperature.Size = new System.Drawing.Size(28, 13);
+            this.lblTemperature.TabIndex = 95;
+            this.lblTemperature.Text = "24.3";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(198, 150);
+            this.label32.Name = "label32";
+            this.label32.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label32.Size = new System.Drawing.Size(24, 13);
+            this.label32.TabIndex = 94;
+            this.label32.Text = "دما:";
+            // 
+            // lblPressure
+            // 
+            this.lblPressure.AutoSize = true;
+            this.lblPressure.Location = new System.Drawing.Point(155, 125);
+            this.lblPressure.Name = "lblPressure";
+            this.lblPressure.Size = new System.Drawing.Size(28, 13);
+            this.lblPressure.TabIndex = 93;
+            this.lblPressure.Text = "24.3";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(198, 125);
+            this.label29.Name = "label29";
+            this.label29.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label29.Size = new System.Drawing.Size(34, 13);
+            this.label29.TabIndex = 92;
+            this.label29.Text = "فشار:";
+            // 
+            // btnHeight
+            // 
+            this.btnHeight.Location = new System.Drawing.Point(132, 84);
+            this.btnHeight.Name = "btnHeight";
+            this.btnHeight.Size = new System.Drawing.Size(106, 23);
+            this.btnHeight.TabIndex = 91;
+            this.btnHeight.Text = "ارتفاع";
+            this.btnHeight.UseVisualStyleBackColor = true;
+            this.btnHeight.Click += new System.EventHandler(this.btnHeight_Click);
+            // 
+            // chkEncoder
+            // 
+            this.chkEncoder.AutoSize = true;
+            this.chkEncoder.Location = new System.Drawing.Point(313, 150);
+            this.chkEncoder.Name = "chkEncoder";
+            this.chkEncoder.Size = new System.Drawing.Size(15, 14);
+            this.chkEncoder.TabIndex = 90;
+            this.chkEncoder.UseVisualStyleBackColor = true;
+            // 
+            // chkLaser
+            // 
+            this.chkLaser.AutoSize = true;
+            this.chkLaser.Location = new System.Drawing.Point(313, 125);
+            this.chkLaser.Name = "chkLaser";
+            this.chkLaser.Size = new System.Drawing.Size(15, 14);
+            this.chkLaser.TabIndex = 89;
+            this.chkLaser.UseVisualStyleBackColor = true;
+            // 
+            // btnLaser
+            // 
+            this.btnLaser.Image = global::SewerRobot.Properties.Resources.Recordin;
+            this.btnLaser.Location = new System.Drawing.Point(368, 123);
+            this.btnLaser.Name = "btnLaser";
+            this.btnLaser.Size = new System.Drawing.Size(16, 16);
+            this.btnLaser.TabIndex = 83;
+            this.btnLaser.Text = "                         ";
+            this.btnLaser.UseVisualStyleBackColor = true;
+            this.btnLaser.Visible = false;
+            // 
+            // btnEncReset
+            // 
+            this.btnEncReset.Location = new System.Drawing.Point(334, 145);
+            this.btnEncReset.Name = "btnEncReset";
+            this.btnEncReset.Size = new System.Drawing.Size(75, 23);
+            this.btnEncReset.TabIndex = 88;
+            this.btnEncReset.Text = "Reset";
+            this.btnEncReset.UseVisualStyleBackColor = true;
+            this.btnEncReset.Click += new System.EventHandler(this.btnEncReset_Click);
+            // 
+            // txtEncoder
+            // 
+            this.txtEncoder.Location = new System.Drawing.Point(415, 148);
+            this.txtEncoder.Name = "txtEncoder";
+            this.txtEncoder.Size = new System.Drawing.Size(87, 20);
+            this.txtEncoder.TabIndex = 87;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("B Nazanin", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label26.Location = new System.Drawing.Point(517, 148);
+            this.label26.Name = "label26";
+            this.label26.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label26.Size = new System.Drawing.Size(35, 20);
+            this.label26.TabIndex = 86;
+            this.label26.Text = "انکودر:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("B Nazanin", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label25.Location = new System.Drawing.Point(517, 122);
+            this.label25.Name = "label25";
+            this.label25.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label25.Size = new System.Drawing.Size(26, 20);
+            this.label25.TabIndex = 85;
+            this.label25.Text = "لیزر:";
+            // 
+            // txtLaser
+            // 
+            this.txtLaser.Location = new System.Drawing.Point(415, 122);
+            this.txtLaser.Name = "txtLaser";
+            this.txtLaser.Size = new System.Drawing.Size(87, 20);
+            this.txtLaser.TabIndex = 84;
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(74, 14);
+            this.button2.Location = new System.Drawing.Point(6, 21);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 65;
@@ -1507,7 +1665,7 @@
             // chkAngle
             // 
             this.chkAngle.AutoSize = true;
-            this.chkAngle.Location = new System.Drawing.Point(20, 106);
+            this.chkAngle.Location = new System.Drawing.Point(111, 60);
             this.chkAngle.Name = "chkAngle";
             this.chkAngle.Size = new System.Drawing.Size(15, 14);
             this.chkAngle.TabIndex = 54;
@@ -1515,7 +1673,7 @@
             // 
             // btnAngleOffsett
             // 
-            this.btnAngleOffsett.Location = new System.Drawing.Point(263, 102);
+            this.btnAngleOffsett.Location = new System.Drawing.Point(302, 55);
             this.btnAngleOffsett.Name = "btnAngleOffsett";
             this.btnAngleOffsett.Size = new System.Drawing.Size(107, 23);
             this.btnAngleOffsett.TabIndex = 78;
@@ -1527,7 +1685,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("B Nazanin", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label19.Location = new System.Drawing.Point(160, 106);
+            this.label19.Location = new System.Drawing.Point(244, 35);
             this.label19.Name = "label19";
             this.label19.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label19.Size = new System.Drawing.Size(43, 20);
@@ -1536,7 +1694,7 @@
             // 
             // txtAngOffset
             // 
-            this.txtAngOffset.Location = new System.Drawing.Point(205, 105);
+            this.txtAngOffset.Location = new System.Drawing.Point(244, 58);
             this.txtAngOffset.Name = "txtAngOffset";
             this.txtAngOffset.Size = new System.Drawing.Size(52, 20);
             this.txtAngOffset.TabIndex = 76;
@@ -1544,7 +1702,7 @@
             // 
             // btnDistanceOffsett
             // 
-            this.btnDistanceOffsett.Location = new System.Drawing.Point(263, 131);
+            this.btnDistanceOffsett.Location = new System.Drawing.Point(302, 84);
             this.btnDistanceOffsett.Name = "btnDistanceOffsett";
             this.btnDistanceOffsett.Size = new System.Drawing.Size(107, 23);
             this.btnDistanceOffsett.TabIndex = 66;
@@ -1554,7 +1712,7 @@
             // 
             // btnAvgAngle
             // 
-            this.btnAvgAngle.Location = new System.Drawing.Point(48, 101);
+            this.btnAvgAngle.Location = new System.Drawing.Point(132, 56);
             this.btnAvgAngle.Name = "btnAvgAngle";
             this.btnAvgAngle.Size = new System.Drawing.Size(106, 23);
             this.btnAvgAngle.TabIndex = 65;
@@ -1564,16 +1722,16 @@
             // 
             // txtAngle
             // 
-            this.txtAngle.Location = new System.Drawing.Point(375, 104);
+            this.txtAngle.Location = new System.Drawing.Point(415, 58);
             this.txtAngle.Name = "txtAngle";
-            this.txtAngle.Size = new System.Drawing.Size(100, 20);
+            this.txtAngle.Size = new System.Drawing.Size(87, 20);
             this.txtAngle.TabIndex = 49;
             this.txtAngle.TextChanged += new System.EventHandler(this.txtAngle_TextChanged);
             // 
             // lblError
             // 
             this.lblError.AutoSize = true;
-            this.lblError.Location = new System.Drawing.Point(6, 148);
+            this.lblError.Location = new System.Drawing.Point(13, 155);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(29, 13);
             this.lblError.TabIndex = 48;
@@ -1581,9 +1739,9 @@
             // 
             // txtDistance
             // 
-            this.txtDistance.Location = new System.Drawing.Point(376, 130);
+            this.txtDistance.Location = new System.Drawing.Point(415, 84);
             this.txtDistance.Name = "txtDistance";
-            this.txtDistance.Size = new System.Drawing.Size(100, 20);
+            this.txtDistance.Size = new System.Drawing.Size(87, 20);
             this.txtDistance.TabIndex = 47;
             this.txtDistance.TextChanged += new System.EventHandler(this.txtDistance_TextChanged);
             // 
@@ -1591,7 +1749,7 @@
             // 
             this.lblDistance.AutoSize = true;
             this.lblDistance.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblDistance.Location = new System.Drawing.Point(497, 127);
+            this.lblDistance.Location = new System.Drawing.Point(508, 81);
             this.lblDistance.Name = "lblDistance";
             this.lblDistance.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblDistance.Size = new System.Drawing.Size(55, 26);
@@ -1602,7 +1760,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(508, 101);
+            this.label3.Location = new System.Drawing.Point(519, 55);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(44, 26);
@@ -1838,7 +1996,6 @@
         private System.Windows.Forms.CheckBox chkCircle;
         private AForge.Controls.ColorSlider clsArrow;
         private System.Windows.Forms.CheckBox chkArrow;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDiameter;
         private System.Windows.Forms.Label label16;
@@ -1883,16 +2040,30 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripButton tlbMinimize;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button btnLaser;
+        private System.Windows.Forms.Button btnEncReset;
+        private System.Windows.Forms.TextBox txtEncoder;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtLaser;
+        private System.Windows.Forms.CheckBox chkEncoder;
+        private System.Windows.Forms.CheckBox chkLaser;
+        private System.Windows.Forms.Button btnHeight;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button btnMeasuring;
+        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button btnPO2;
         private System.Windows.Forms.Button btnPO1;
         private System.Windows.Forms.Button btnPL2;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtPointsDistance;
         private System.Windows.Forms.Button btnPL1;
         private System.Windows.Forms.CheckBox chkDrawingTools;
-        private System.Windows.Forms.Button btnMeasuring;
+        private System.Windows.Forms.Label lblTemperature;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label lblPressure;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

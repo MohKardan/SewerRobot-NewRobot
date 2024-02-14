@@ -299,8 +299,8 @@ namespace SewerRobot
                     break;
                 case "% (OJ)":
                     if (TypeErrorTemp == "اتصال باز")
-                        ErrorCodeTemp = "جابجایی در محل اتصال (OJ) به میزان ";
-                    EndNameTemp = "از قطر";
+                        ErrorCodeTemp = "باز شدگی محل اتصال به میزان ";
+                    EndNameTemp = "از قطر (OJ)";
                     PercentTemp = true;
                     break;
                 case "افزایش زبری (SW)":

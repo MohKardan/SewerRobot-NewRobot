@@ -284,3 +284,6 @@ H:\SewerRobot-NewRobot-1396.02.21\SewerRobot\obj\x86\Debug\SewerRobot.frmConnect
 H:\SewerRobot-NewRobot-1396.02.21\SewerRobot\obj\x86\Debug\SewerRobot.frmMain.resources
 H:\SewerRobot-NewRobot-1396.02.21\SewerRobot\obj\x86\Debug\SewerRobot.Properties.Resources.resources
 H:\SewerRobot-NewRobot-1396.02.21\SewerRobot\obj\x86\Debug\SewerRobot.csproj.GenerateResource.Cache
+H:\SewerRobot-GermanRobot-1396.02.25\SewerRobot\bin\x86\Debug\SewerRobot.exe.config
+H:\SewerRobot-GermanRobot-1396.02.25\SewerRobot\obj\x86\Debug\SewerRobot.exe
+H:\SewerRobot-GermanRobot-1396.02.25\SewerRobot\obj\x86\Debug\SewerRobot.pdb
