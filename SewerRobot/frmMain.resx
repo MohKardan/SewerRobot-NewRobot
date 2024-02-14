@@ -205,6 +205,19 @@
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>330, 17</value>
   </metadata>
+  <data name="tlbMinimize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGESURBVFhH7ZdNSsNQFIU71T3oBhRxHYouwL9kWFfRv3E3
+        IYjOHDhRRApqsTgWZ7a1rYIoKm5AvxNfsIbbgsS+IOTCx03eee+e25cQXgvDUSqVlmAHbmAAD+Vy+RGe
+        BPcv5FdleIP3MUjXvGfVIF+TdyuVyoqz+xmIe/DhA5rZd7ZfweBBcpIHDiNztmTZEL3ATqzq158mBY+c
+        6MVrG4IvOtqB28SgTzqZ7gDeXTXQtUQf4N1TAz1L9EQ/0wbwHqiBgSX6IG8gbyBv4F80cA7HgnlHvyFe
+        52pYtcc3wHgYnVj+IKgXJOuLuAHzU8z4rFufOmq12swIj7ENzLv1qaNarc5ZHtDX9twlBiNoYNGtTx3U
+        Whjh0VMDnaQgEFtQhJD7gLxF3iRvkNfJa8rD107THM3VmhCKXF+C5dHN9EhGA21tT+ZHsjNL9ERTj0DP
+        0RJ9EMRvacsQJwqeV5G5ol6vTzFwYU2cEE38pp39dyBsQwNRH6d7sv6ip8bVUs2GPJwdUSh8AjWq5VsX
+        TOypAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>428, 17</value>
   </metadata>

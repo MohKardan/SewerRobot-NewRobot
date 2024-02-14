@@ -68,7 +68,7 @@
             this.txtState = new System.Windows.Forms.TextBox();
             this.txtStartAddress = new System.Windows.Forms.TextBox();
             this.txtContractor = new System.Windows.Forms.TextBox();
-            this.txtEmployee = new System.Windows.Forms.TextBox();
+            this.txtEmployer = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdbShowError = new System.Windows.Forms.RadioButton();
@@ -95,6 +95,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtAddTextR = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chkDrawingTools = new System.Windows.Forms.CheckBox();
             this.clsArrow = new AForge.Controls.ColorSlider();
             this.chkArrow = new System.Windows.Forms.CheckBox();
             this.clsRectangle = new AForge.Controls.ColorSlider();
@@ -114,6 +115,15 @@
             this.label21 = new System.Windows.Forms.Label();
             this.cmbPipeMaterial = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnMeasuring = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.btnPO2 = new System.Windows.Forms.Button();
+            this.btnPO1 = new System.Windows.Forms.Button();
+            this.btnPL2 = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtPointsDistance = new System.Windows.Forms.TextBox();
+            this.btnPL1 = new System.Windows.Forms.Button();
             this.btnNewProject = new System.Windows.Forms.Button();
             this.grpMotor = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -135,6 +145,7 @@
             this.btnSelectCamera = new System.Windows.Forms.Button();
             this.lblRec = new System.Windows.Forms.Label();
             this.grpSensors = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.chkAngle = new System.Windows.Forms.CheckBox();
             this.btnAngleOffsett = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
@@ -148,6 +159,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tlbQuit = new System.Windows.Forms.ToolStripButton();
+            this.tlbMinimize = new System.Windows.Forms.ToolStripButton();
             this.tlbConnect = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tllHelp = new System.Windows.Forms.ToolStripLabel();
@@ -156,7 +168,6 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trbSpeedControl)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -164,6 +175,7 @@
             this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.grpMotor.SuspendLayout();
             this.grpCamera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbLighting)).BeginInit();
@@ -264,6 +276,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Font = new System.Drawing.Font("B Nazanin", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.tabControl1.Location = new System.Drawing.Point(736, 28);
             this.tabControl1.Name = "tabControl1";
@@ -302,7 +315,7 @@
             this.tabPage1.Controls.Add(this.txtState);
             this.tabPage1.Controls.Add(this.txtStartAddress);
             this.tabPage1.Controls.Add(this.txtContractor);
-            this.tabPage1.Controls.Add(this.txtEmployee);
+            this.tabPage1.Controls.Add(this.txtEmployer);
             this.tabPage1.Font = new System.Drawing.Font("B Mitra", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
@@ -575,12 +588,12 @@
             this.txtContractor.Size = new System.Drawing.Size(196, 27);
             this.txtContractor.TabIndex = 1;
             // 
-            // txtEmployee
+            // txtEmployer
             // 
-            this.txtEmployee.Location = new System.Drawing.Point(103, 71);
-            this.txtEmployee.Name = "txtEmployee";
-            this.txtEmployee.Size = new System.Drawing.Size(196, 27);
-            this.txtEmployee.TabIndex = 2;
+            this.txtEmployer.Location = new System.Drawing.Point(103, 71);
+            this.txtEmployer.Name = "txtEmployer";
+            this.txtEmployer.Size = new System.Drawing.Size(196, 27);
+            this.txtEmployer.TabIndex = 2;
             // 
             // tabPage2
             // 
@@ -870,6 +883,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.chkDrawingTools);
             this.tabPage3.Controls.Add(this.clsArrow);
             this.tabPage3.Controls.Add(this.chkArrow);
             this.tabPage3.Controls.Add(this.clsRectangle);
@@ -884,6 +898,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "ابزار ترسیم";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // chkDrawingTools
+            // 
+            this.chkDrawingTools.AutoSize = true;
+            this.chkDrawingTools.Location = new System.Drawing.Point(255, 269);
+            this.chkDrawingTools.Name = "chkDrawingTools";
+            this.chkDrawingTools.Size = new System.Drawing.Size(49, 24);
+            this.chkDrawingTools.TabIndex = 25;
+            this.chkDrawingTools.Text = "فعال";
+            this.chkDrawingTools.UseVisualStyleBackColor = true;
             // 
             // clsArrow
             // 
@@ -945,7 +969,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(180, 139);
+            this.button1.Location = new System.Drawing.Point(78, 121);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -1115,6 +1139,102 @@
             this.label20.TabIndex = 46;
             this.label20.Text = "جنس لوله:";
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.btnMeasuring);
+            this.tabPage5.Controls.Add(this.label26);
+            this.tabPage5.Controls.Add(this.btnPO2);
+            this.tabPage5.Controls.Add(this.btnPO1);
+            this.tabPage5.Controls.Add(this.btnPL2);
+            this.tabPage5.Controls.Add(this.label25);
+            this.tabPage5.Controls.Add(this.txtPointsDistance);
+            this.tabPage5.Controls.Add(this.btnPL1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(408, 447);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "تشخیص ابعاد";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnMeasuring
+            // 
+            this.btnMeasuring.Location = new System.Drawing.Point(156, 214);
+            this.btnMeasuring.Name = "btnMeasuring";
+            this.btnMeasuring.Size = new System.Drawing.Size(93, 23);
+            this.btnMeasuring.TabIndex = 7;
+            this.btnMeasuring.Text = "Measuring";
+            this.btnMeasuring.UseVisualStyleBackColor = true;
+            this.btnMeasuring.Click += new System.EventHandler(this.btnMeasuring_Click);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(264, 45);
+            this.label26.Name = "label26";
+            this.label26.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label26.Size = new System.Drawing.Size(33, 20);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "mm";
+            // 
+            // btnPO2
+            // 
+            this.btnPO2.Location = new System.Drawing.Point(204, 185);
+            this.btnPO2.Name = "btnPO2";
+            this.btnPO2.Size = new System.Drawing.Size(75, 23);
+            this.btnPO2.TabIndex = 5;
+            this.btnPO2.Text = "PO2";
+            this.btnPO2.UseVisualStyleBackColor = true;
+            this.btnPO2.Click += new System.EventHandler(this.btnPO2_Click);
+            // 
+            // btnPO1
+            // 
+            this.btnPO1.Location = new System.Drawing.Point(123, 185);
+            this.btnPO1.Name = "btnPO1";
+            this.btnPO1.Size = new System.Drawing.Size(75, 23);
+            this.btnPO1.TabIndex = 4;
+            this.btnPO1.Text = "PO1";
+            this.btnPO1.UseVisualStyleBackColor = true;
+            this.btnPO1.Click += new System.EventHandler(this.btnPO1_Click);
+            // 
+            // btnPL2
+            // 
+            this.btnPL2.Location = new System.Drawing.Point(204, 156);
+            this.btnPL2.Name = "btnPL2";
+            this.btnPL2.Size = new System.Drawing.Size(75, 23);
+            this.btnPL2.TabIndex = 3;
+            this.btnPL2.Text = "PL2";
+            this.btnPL2.UseVisualStyleBackColor = true;
+            this.btnPL2.Click += new System.EventHandler(this.btnPL2_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(310, 45);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(70, 20);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "فاصله دو لیزر";
+            // 
+            // txtPointsDistance
+            // 
+            this.txtPointsDistance.Location = new System.Drawing.Point(204, 42);
+            this.txtPointsDistance.Name = "txtPointsDistance";
+            this.txtPointsDistance.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPointsDistance.Size = new System.Drawing.Size(54, 28);
+            this.txtPointsDistance.TabIndex = 1;
+            this.txtPointsDistance.Text = "55";
+            // 
+            // btnPL1
+            // 
+            this.btnPL1.Location = new System.Drawing.Point(123, 156);
+            this.btnPL1.Name = "btnPL1";
+            this.btnPL1.Size = new System.Drawing.Size(75, 23);
+            this.btnPL1.TabIndex = 0;
+            this.btnPL1.Text = "PL1";
+            this.btnPL1.UseVisualStyleBackColor = true;
+            this.btnPL1.Click += new System.EventHandler(this.btnPL1_Click);
+            // 
             // btnNewProject
             // 
             this.btnNewProject.Font = new System.Drawing.Font("B Mitra", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -1245,11 +1365,13 @@
             this.trbSpeedRotation.LargeChange = 16;
             this.trbSpeedRotation.Location = new System.Drawing.Point(138, 120);
             this.trbSpeedRotation.Maximum = 63;
+            this.trbSpeedRotation.Minimum = 1;
             this.trbSpeedRotation.Name = "trbSpeedRotation";
+            this.trbSpeedRotation.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trbSpeedRotation.Size = new System.Drawing.Size(180, 45);
             this.trbSpeedRotation.SmallChange = 16;
             this.trbSpeedRotation.TabIndex = 64;
-            this.trbSpeedRotation.Value = 56;
+            this.trbSpeedRotation.Value = 32;
             // 
             // btnCameraPanLeft
             // 
@@ -1259,7 +1381,6 @@
             this.btnCameraPanLeft.TabIndex = 63;
             this.btnCameraPanLeft.Text = "Left";
             this.btnCameraPanLeft.UseVisualStyleBackColor = true;
-            this.btnCameraPanLeft.Click += new System.EventHandler(this.btnCameraPanLeft_Click);
             this.btnCameraPanLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCameraPanLeft_MouseDown);
             this.btnCameraPanLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnCameraPanLeft_MouseUp);
             // 
@@ -1271,7 +1392,6 @@
             this.btnCameraTiltDown.TabIndex = 62;
             this.btnCameraTiltDown.Text = "Down";
             this.btnCameraTiltDown.UseVisualStyleBackColor = true;
-            this.btnCameraTiltDown.Click += new System.EventHandler(this.btnCameraTiltDown_Click);
             this.btnCameraTiltDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCameraTiltDown_MouseDown);
             this.btnCameraTiltDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnCameraTiltDown_MouseUp);
             // 
@@ -1283,7 +1403,6 @@
             this.btnCameraPanRight.TabIndex = 61;
             this.btnCameraPanRight.Text = "Right";
             this.btnCameraPanRight.UseVisualStyleBackColor = true;
-            this.btnCameraPanRight.Click += new System.EventHandler(this.btnCameraPanRight_Click);
             this.btnCameraPanRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCameraPanRight_MouseDown);
             this.btnCameraPanRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnCameraPanRight_MouseUp);
             // 
@@ -1295,7 +1414,6 @@
             this.btnCameraTiltUp.TabIndex = 60;
             this.btnCameraTiltUp.Text = "Up";
             this.btnCameraTiltUp.UseVisualStyleBackColor = true;
-            this.btnCameraTiltUp.Click += new System.EventHandler(this.btnCameraTiltUp_Click);
             this.btnCameraTiltUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnCameraTiltUp_MouseDown);
             this.btnCameraTiltUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnCameraTiltUp_MouseUp);
             // 
@@ -1375,6 +1493,16 @@
             this.grpSensors.TabIndex = 61;
             this.grpSensors.TabStop = false;
             this.grpSensors.Text = "Sensors       ";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(74, 14);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 65;
+            this.button2.Text = "Set Camera";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // chkAngle
             // 
@@ -1486,6 +1614,7 @@
             this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlbQuit,
+            this.tlbMinimize,
             this.tlbConnect,
             this.toolStripButton3,
             this.tllHelp,
@@ -1504,7 +1633,18 @@
             this.tlbQuit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlbQuit.Name = "tlbQuit";
             this.tlbQuit.Size = new System.Drawing.Size(23, 22);
+            this.tlbQuit.Text = "Close";
             this.tlbQuit.Click += new System.EventHandler(this.tlbQuit_Click);
+            // 
+            // tlbMinimize
+            // 
+            this.tlbMinimize.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlbMinimize.Image = ((System.Drawing.Image)(resources.GetObject("tlbMinimize.Image")));
+            this.tlbMinimize.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlbMinimize.Name = "tlbMinimize";
+            this.tlbMinimize.Size = new System.Drawing.Size(23, 22);
+            this.tlbMinimize.Text = "Minimize";
+            this.tlbMinimize.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // tlbConnect
             // 
@@ -1513,6 +1653,7 @@
             this.tlbConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlbConnect.Name = "tlbConnect";
             this.tlbConnect.Size = new System.Drawing.Size(23, 22);
+            this.tlbConnect.Text = "Connect";
             this.tlbConnect.Click += new System.EventHandler(this.tlbConnect_Click);
             // 
             // toolStripButton3
@@ -1522,7 +1663,7 @@
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Text = "Setting";
             // 
             // tllHelp
             // 
@@ -1562,16 +1703,6 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(74, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 65;
-            this.button2.Text = "Set Camera";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1605,6 +1736,8 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.grpMotor.ResumeLayout(false);
             this.grpMotor.PerformLayout();
             this.grpCamera.ResumeLayout(false);
@@ -1645,7 +1778,7 @@
         private System.Windows.Forms.TextBox txtState;
         private System.Windows.Forms.TextBox txtStartAddress;
         private System.Windows.Forms.TextBox txtContractor;
-        private System.Windows.Forms.TextBox txtEmployee;
+        private System.Windows.Forms.TextBox txtEmployer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPipeSize;
@@ -1749,6 +1882,17 @@
         private System.Windows.Forms.ComboBox cmbLocation;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripButton tlbMinimize;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btnPO2;
+        private System.Windows.Forms.Button btnPO1;
+        private System.Windows.Forms.Button btnPL2;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtPointsDistance;
+        private System.Windows.Forms.Button btnPL1;
+        private System.Windows.Forms.CheckBox chkDrawingTools;
+        private System.Windows.Forms.Button btnMeasuring;
     }
 }
 
